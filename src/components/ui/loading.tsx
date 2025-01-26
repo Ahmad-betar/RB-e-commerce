@@ -19,7 +19,7 @@ export default function LoadingSpinner({
   };
 
   const colorClasses = {
-    primary: "text-primary",
+    primary: "text-secondary",
     secondary: "text-secondary",
     white: "text-white",
   };

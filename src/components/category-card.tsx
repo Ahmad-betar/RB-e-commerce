@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-
+import curvyline from "@/assets/curvy-line.svg";
+import logo from "@/assets/logo.svg";
 interface CategoryCardProps {
   title: string;
   subtitle: string;
@@ -7,17 +8,14 @@ interface CategoryCardProps {
 
 export function CategoryCard({ title, subtitle }: CategoryCardProps) {
   return (
-    <Link to={`/category/${title}`} className="group relative block">
-      <div className="overflow-hidden rounded-lg border bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
-        <img
-          src="/placeholder.svg"
-          alt="RB Designer Logo"
-          width={120}
-          height={60}
-          className="mx-auto mb-4"
-        />
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-        <p className="text-sm text-gray-500">{subtitle}</p>
+    <Link to={`/category/${title}`} className="">
+      <div className="rounded-xl border flex flex-col gap-4 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
+        <img src={logo} className="mx-auto mb-4" />
+        <img src={curvyline} alt="" />
+        <h3 className="flex justify-center gap-1 text-lg font-semibold text-gray-900">
+          {title}
+          <p className="text-secondary">{subtitle}</p>
+        </h3>
       </div>
     </Link>
   );

@@ -1,0 +1,21 @@
+{
+  "auth": {
+    "create_account": "create account"
+  },
+  "create_account": {
+    "name": "Name",
+    "enter_name": "Enter a Name",
+    "email": "Email address",
+    "enter_email": "Enter a Email",
+    "phone_number": "Phone Number",
+    "enter_phone_number": "Enter a Phone Number",
+    "address": "Address",
+    "country": "country",
+    "governorate": "Governorate",
+    "region": "Region"
+  },
+  "form": {
+    "enter_obj": "Enter {{obj}}"
+  },
+  "cart": { "cart": "cart", "cart_content": "cart_content" }
+}

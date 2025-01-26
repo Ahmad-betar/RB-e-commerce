@@ -1,0 +1,31 @@
+{
+  "auth": {
+    "create_account": "أنشئ حساب"
+  },
+  "create_account": {
+    "create_account": "أنشئ حساب",
+    "name": "الاسم",
+    "enter_name": "ادخل اسم",
+    "email": "بريد الكتروني",
+    "enter_email": "ادخل بريدك الالكتروني",
+    "phone_number": "رقم الهاتف",
+    "enter_phone_number": "ادخل رقمك الالكتروني",
+    "address": "العنوان",
+    "country": "البلد",
+    "governorate": "المحافظة",
+    "region": "المنطقة",
+    "piece": "قطعة",
+    "street": "شارع",
+    "Avenue": "جادة",
+    "house": "منزل",
+    "floor": "طابق",
+    "building": "مبنى",
+    "apartment": "شقة",
+    "another_details": " تفاصيل اخرى"
+  },
+  "form": {
+    "enter_obj": "ادخل {{obj}}",
+    "save": "حفظ ومتابعة"
+  },
+  "cart": { "cart": "السلة", "cart_content": "محتويات السلة" }
+}

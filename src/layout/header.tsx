@@ -1,10 +1,32 @@
 import { Search, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.svg";
+import home from "@/assets/home.svg";
+import categories from "@/assets/categories.svg";
 
-export function Header() {
+function Header() {
   return (
-    <header className="bg-[#E6DED7] p-4">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="flex flex-col bg-[#E6DED7] px-4 pt-2 w-full">
+      <div className="flex items-center justify-between w-full shadow-sm">
+        <Link
+          to="/"
+          className="text-2xl font-bold px-6 border-l-2 border-l-black"
+        >
+          <img src={logo} alt="" />
+        </Link>
+
+        <div className="flex items-center gap-40">
+          <Link to="/" className=" flex gap-1 text-lg font-bold">
+            <img src={home} alt="" />
+            الرئيسية
+          </Link>
+
+          <Link to="/" className="flex text-lg font-bold">
+            <img className="" src={categories} alt="" />
+            {/* التصنيفات */}
+          </Link>
+        </div>
+
         <div className="flex gap-4">
           <button aria-label="Search">
             <Search className="h-6 w-6" />
@@ -19,16 +41,13 @@ export function Header() {
             <User className="h-6 w-6" />
           </button>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="text-sm font-medium">التصنيفات</button>
-          <Link to="/" className="text-sm font-medium">
-            الرئيسية
-          </Link>
-        </div>
-        <Link to="/" className="text-2xl font-bold">
-          RB
-        </Link>
       </div>
+
+      <span className="h-8 flex items-center text-white">
+        عبايات جديدة ومنوعة وجودة عالية
+      </span>
     </header>
   );
 }
+
+export default Header;

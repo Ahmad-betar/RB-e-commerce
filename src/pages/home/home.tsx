@@ -1,15 +1,24 @@
-import { Header } from "@/layout/header";
 import { CategoryCard } from "@/components/category-card";
 import { ProductCard } from "@/components/product-card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import image from "@/assets/to-delete/home image.png";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import TextField from "@/components/TextField";
 
 export default function Home() {
   const categories = [
-    { title: "عبايات العمل", subtitle: "العملية" },
-    { title: "عبايات التطريز", subtitle: "التطريز" },
-    { title: "عبايات السادة", subtitle: "السادة" },
-    { title: "داخلية العبايات", subtitle: "العبايات" },
-    { title: "عبايات المناسبات", subtitle: "المناسبات" },
-    { title: "عبايات الشبك", subtitle: "الشبك" },
+    { title: "عبايات", subtitle: "العملية" },
+    { title: "عبايات", subtitle: "التطريز" },
+    { title: "عبايات", subtitle: "السادة" },
+    { title: "داخلية", subtitle: "العبايات" },
+    { title: "عبايات", subtitle: "المناسبات" },
+    { title: "عبايات", subtitle: "الشبك" },
   ];
 
   const products = Array(8).fill({
@@ -19,22 +28,27 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
-      <Header />
-      <main className="container mx-auto px-4 py-8">
+    <div className="">
+      <main className="container mx-auto px-20 py-8">
         {/* Hero Section */}
-        <section className="mb-12 text-center">
-          <div className="relative mx-auto max-w-2xl">
-            <img
-              src="/placeholder.svg?height=600&width=400"
-              alt="Featured Abaya"
-              width={400}
-              height={600}
-              className="mx-auto"
-            />
-          </div>
+
+        <section className=" flex flex-col justify-center items-center mb-32 text-center">
+          <Carousel className="w-full " opts={{ direction: "rtl" }}>
+            <CarouselContent>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem key={index}>
+                  <div className="mx-auto max-w-4xl">
+                    <img src={image} className="mx-auto" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselNext />
+            <CarouselPrevious />
+          </Carousel>
+
           <h1 className="mt-6 text-3xl font-bold">
-            أكثر من مجرد <span className="text-gray-400">عباية</span>
+            أكثر من مجرد <span className="text-secondary">عباية</span>
           </h1>
         </section>
 
@@ -54,43 +68,39 @@ export default function Home() {
 
         {/* Products Grid */}
         <section>
-          <div className="mb-8 flex justify-between">
-            <h2 className="text-xl font-bold">رائج الآن</h2>
-            <div className="space-x-4 space-x-reverse">
-              <button className="text-sm font-medium">الأحدث</button>
-              <button className="text-sm font-medium">الأكثر مبيعاً</button>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {products.map((product, index) => (
-              <ProductCard key={index} {...product} />
-            ))}
-          </div>
+          <Tabs defaultValue="popular" className="w-full">
+            <TabsList className="w-full my-4">
+              <TabsTrigger value="popular">رائج الآن</TabsTrigger>
+              <TabsTrigger value="newest">الأحدث</TabsTrigger>
+              <TabsTrigger value="most-sell">الأكثر مبيعا</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="popular">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {products.map((product, index) => (
+                  <ProductCard key={index} {...product} />
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="newest">
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                {products.map((product, index) => (
+                  <ProductCard key={index} {...product} />
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="most-sell">
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                {products.map((product, index) => (
+                  <ProductCard key={index} {...product} />
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="mt-16 border-t bg-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between">
-            <div>
-              <h3 className="mb-4 font-semibold">طرق الدفع</h3>
-              <div className="flex gap-2">
-                <div className="h-8 w-12 rounded bg-gray-200" />
-                <div className="h-8 w-12 rounded bg-gray-200" />
-                <div className="h-8 w-12 rounded bg-gray-200" />
-              </div>
-            </div>
-            <div>
-              <h3 className="mb-4 font-semibold">وسائل التواصل</h3>
-              <div className="flex gap-4">
-                <div className="h-6 w-6 rounded-full bg-gray-200" />
-                <div className="h-6 w-6 rounded-full bg-gray-200" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

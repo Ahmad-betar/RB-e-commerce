@@ -1,8 +1,18 @@
 import "./App.css";
 import Routes from "../routes";
+import Header from "./layout/header";
+import Footer from "./layout/footer";
 
 function App() {
-  return <Routes></Routes>;
+  return (
+    <>
+      <Header />
+
+      <Routes></Routes>
+
+      <Footer />
+    </>
+  );
 }
 
 export default App;
