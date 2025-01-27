@@ -21,7 +21,7 @@ function Header() {
             الرئيسية
           </Link>
 
-          <Link to="/" className="flex text-lg font-bold">
+          <Link to="/categories" className="flex text-lg font-bold">
             <img className="" src={categories} alt="" />
             {/* التصنيفات */}
           </Link>

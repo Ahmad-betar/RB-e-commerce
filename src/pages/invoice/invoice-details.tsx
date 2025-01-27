@@ -1,3 +1,4 @@
+import CouponInput from "@/components/coupon-input";
 import RHFSelect from "@/components/rhf-select";
 import RHFTextarea from "@/components/rhf-textarea";
 import TextField from "@/components/TextField";
@@ -6,22 +7,42 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Header from "@/layout/header";
 import { t } from "i18next";
+import CartItem from "../cart/cart-item";
+import { useState } from "react";
+import Footer from "@/layout/footer";
 
-const CreateAccount = ({ create }: { create: boolean }) => {
+const InvoiceDetails = () => {
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      title: "عباية تطريز ذهبي - 50 - مطرز",
+      price: 70,
+      quantity: 1,
+    },
+    {
+      id: 2,
+      title: "عباية تطريز ذهبي - 50 - مطرز",
+      price: 70,
+      quantity: 1,
+    },
+    {
+      id: 3,
+      title: "عباية تطريز ذهبي - 50 - مطرز",
+      price: 70,
+      quantity: 1,
+    },
+  ]);
+
   return (
     <>
       <Header />
 
       <form className="flex flex-col">
-        {create ? (
-          <Title text={"create_account.create_account"} />
-        ) : (
-          <Title text={"create_account.account_info"} />
-        )}
+        <Title text={"invoice.invoice_details"} />
 
         <div className="grid grid-cols-3 gap-8 px-20">
           <TextField
-            label="create_account.create_account"
+            label="create_account.enter_name"
             placeholder="create_account.enter_name"
           />
           <TextField
@@ -113,10 +134,64 @@ const CreateAccount = ({ create }: { create: boolean }) => {
           />
         </div>
 
-        <Button className="mx-auto w-40 font-bold mb-8">{t("form.save")}</Button>
+        <p className="text-4xl font-bold">{t("invoice.order_summary")}</p>
+
+        <div className="my-4 text-lg font-semibold px-4 md:px-12 lg:px-20">
+          {t("cart.cart_content")}
+        </div>
+
+        <div className="flex flex-col gap-4 px-4 md:px-12 lg:px-20">
+          {items.map((item) => (
+            <CartItem
+              key={item.id}
+              title={item.title}
+              price={item.price}
+              quantity={item.quantity}
+              onDelete={() => {}}
+              onQuantityChange={() => {}}
+            />
+          ))}
+        </div>
+
+        <div className="px-4 md:px-12 lg:px-20 mt-8">
+          <div className="flex justify-between items-start mb-8 max-sm:flex-col max-sm:gap-6">
+            <CouponInput />
+
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between gap-10">
+                <span>{t("form.count")}</span>
+                <span>50 د.ك</span>
+              </div>
+              <div className="flex items-center justify-between gap-10">
+                <span>{t("form.product_discount")}</span>
+                <span>50 د.ك</span>
+              </div>
+              <div className="flex items-center justify-between gap-10">
+                <span>{t("form.deliviry_price")}</span>
+                <span>50 د.ك</span>
+              </div>
+              <div className="flex items-center justify-between gap-10">
+                <span>{t("form.discount")}</span>
+                <span>50 د.ك</span>
+              </div>
+              <div className="flex items-center justify-between gap-10 font-bold">
+                <span>{t("form.total")}</span>
+                <span>50 د.ك</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-end gap-8 ">
+            <Button variant="secondary" className="w-fit px-8 font-bold mb-10">
+              {t("form.complete_order")}
+            </Button>
+          </div>
+        </div>
       </form>
+
+      <Footer />
     </>
   );
 };
 
-export default CreateAccount;
+export default InvoiceDetails;

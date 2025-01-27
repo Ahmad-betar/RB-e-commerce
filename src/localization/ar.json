@@ -4,6 +4,7 @@
   },
   "create_account": {
     "create_account": "أنشئ حساب",
+    "account_info": "معلومات الحساب",
     "name": "الاسم",
     "enter_name": "ادخل اسم",
     "email": "بريد الكتروني",
@@ -23,9 +24,51 @@
     "apartment": "شقة",
     "another_details": " تفاصيل اخرى"
   },
+  "categories": {
+    "categories": "التصنيفات"
+  },
   "form": {
     "enter_obj": "ادخل {{obj}}",
-    "save": "حفظ ومتابعة"
+    "save": "حفظ ومتابعة",
+    "sort": "اختر الترتيب",
+    "filter": "فلتر",
+    "enter_username": "ادخل اسم المستخدم",
+    "enter_password": "ادخل كلمة السر",
+    "enter_email_password": "يرجى ادخال الايميل او رقم الموبايل (مسبوق باللاحقة الدولية)",
+    "please_password": "يرجى ادخال كلمة المرور",
+    "continue": "متابعة",
+    "dont_have_account": "ليس لديك حساب",
+    "add_to_cart": "أضف إلى السلة",
+    "discount": "الخصم",
+    "deliviry_price": "رسوم التوصيل",
+    "product_discount": "خصم المنتجات",
+    "count": "المجموع",
+    "total": "المجموع الكلي",
+    "complete_order": "الذهاب لإتمام الطلب"
+  },
+  "item": {
+    "abaya": "العباية",
+    "with_freefile": "مع ملف مجاني",
+    "classic_abaya": "عبايات كلاسيك",
+    "abaya_gold": "عباية تطريز ذهبي",
+    "size": "القياس",
+    "abaya_type": "نوع العباية",
+    "details": "تفاصيل التصميم",
+    "notes": "ملاحظات",
+    "count": "كمية",
+    "offers_collections": "كولكشن العروض",
+    "choose_one": " اختيارك الأول من المجموعة",
+    "choose_two": " اختيارك الأول من المجموعة",
+    "choose_three": " اختيارك الأول من المجموعة"
+  },
+  "home": {
+    "popular": "رائج الآن",
+    "most_sell": "الأكثر مبيعاً",
+    "newest": "الأحدث"
+  },
+  "invoice": {
+    "invoice_details": "تفاصيل الفاتورة",
+    "order_summary": "ملخص الطلبية"
   },
   "cart": { "cart": "السلة", "cart_content": "محتويات السلة" }
 }

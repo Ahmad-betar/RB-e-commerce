@@ -10,6 +10,8 @@ import {
 import image from "@/assets/to-delete/home image.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TextField from "@/components/TextField";
+import Header from "@/layout/header";
+import Footer from "@/layout/footer";
 
 export default function Home() {
   const categories = [
@@ -29,6 +31,7 @@ export default function Home() {
 
   return (
     <div className="">
+      <Header />
       <main className="container mx-auto px-20 py-8">
         {/* Hero Section */}
 
@@ -101,6 +104,8 @@ export default function Home() {
           </Tabs>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

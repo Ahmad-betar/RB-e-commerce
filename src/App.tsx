@@ -6,11 +6,11 @@ import Footer from "./layout/footer";
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
 
       <Routes></Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

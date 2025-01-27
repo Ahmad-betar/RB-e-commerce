@@ -4,17 +4,38 @@ import { Route, Routes as ReactRoutes } from "react-router-dom";
 // import LoadingSpinner from "./src/components/ui/loading";
 
 const Routes = () => {
+  const Login = lazy(() => import("@/pages/auth/login"));
+  const CreateAccount = lazy(() => import("@/pages/auth/create-account"));
   const Home = lazy(() => import("@/pages/home/home"));
   const Cart = lazy(() => import("@/pages/cart/cart"));
-  const CreateAccount = lazy(() => import("@/pages/auth/create-account"));
+  const Categories = lazy(() => import("@/pages/categories/categories"));
+  const Item = lazy(() => import("@/pages/item/item-page"));
+  const Item2 = lazy(() => import("@/pages/item/item-page2"));
+  const InvoiceDetails = lazy(() => import("@/pages/invoice/invoice-details"));
 
   return (
     <ReactRoutes>
       <Route
+        path="/login"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <Login />
+          </Suspense>
+        }
+      />
+      <Route
         path="/create-account"
         element={
           <Suspense fallback={<LoadingSpinner />}>
-            <CreateAccount />
+            <CreateAccount create />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/account-info"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <CreateAccount create={false} />
           </Suspense>
         }
       />
@@ -29,10 +50,46 @@ const Routes = () => {
       />
 
       <Route
+        path="/categories"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <Categories />
+          </Suspense>
+        }
+      />
+
+      <Route
         path="/cart"
         element={
           <Suspense fallback={<LoadingSpinner />}>
             <Cart />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/item-1"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <Item />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/item-2"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <Item2 />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/invoice-details"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <InvoiceDetails />
           </Suspense>
         }
       />

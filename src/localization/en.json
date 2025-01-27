@@ -17,5 +17,8 @@
   "form": {
     "enter_obj": "Enter {{obj}}"
   },
-  "cart": { "cart": "cart", "cart_content": "cart_content" }
+  "cart": { "cart": "cart", "cart_content": "cart_content" },
+  "items" : {
+    "with_freefile" : "مع ملف مجاني"
+  }
 }

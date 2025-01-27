@@ -45,7 +45,7 @@ const Cart = () => {
   return (
     <>
       <main className="py-8">
-        <Title text="السلة" />
+        <Title text="cart.cart" />
 
         <div className="mb-4 text-lg font-semibold px-4 md:px-12 lg:px-20">
           محتويات السلة:

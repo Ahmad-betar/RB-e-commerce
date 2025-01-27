@@ -14,14 +14,33 @@ interface Props {
   label: string;
   placeholder?: string;
   className?: string;
+  labelOnright?: boolean;
 }
-const RHFSelect = ({ items, placeholder, className, label }: Props) => {
+const RHFSelect = ({
+  items,
+  placeholder,
+  className,
+  label,
+  labelOnright,
+}: Props) => {
   return (
-    <div className="flex flex-col">
-      <Label className="mb-2">{t(label)}:</Label>
+    <div
+      className={cn("flex flex-col", {
+        "flex-row gap-4": labelOnright,
+      })}
+    >
+      <Label
+        className={cn("mb-2", {
+          "flex items-center font-bold mb-0 p-1": labelOnright,
+        })}
+      >
+        {t(label) + ":"}
+      </Label>
 
       <Select>
-        <SelectTrigger className={cn("mr-4", className)}>
+        <SelectTrigger
+          className={cn("mr-4", { "mr-0 w-full": labelOnright }, className)}
+        >
           <SelectValue placeholder={t(placeholder ?? "")} />
         </SelectTrigger>
         <SelectContent>
