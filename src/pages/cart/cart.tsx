@@ -1,5 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { buttonVariants } from "@/components/ui/button";
 import { useState } from "react";
 import CartItem from "./cart-item";
 import Title from "@/components/title";

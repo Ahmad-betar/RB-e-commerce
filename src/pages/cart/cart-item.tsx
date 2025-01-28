@@ -1,4 +1,4 @@
-import { Edit, Share2, Trash2 } from "lucide-react";
+import { Edit, Trash2 } from "lucide-react";
 import image from "@/assets/to-delete/home image.png";
 import { Button } from "@/components/ui/button";
 
@@ -12,10 +12,8 @@ interface CartItemProps {
 
 const CartItem = ({
   title,
-  price,
   quantity,
   onQuantityChange,
-  onDelete,
 }: CartItemProps) => {
   return (
     <div className="flex items-center justify-between rounded-lg bg-gray-50 h-24 p-2">

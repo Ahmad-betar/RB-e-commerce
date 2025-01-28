@@ -1,9 +1,5 @@
 import CouponInput from "@/components/coupon-input";
-import RHFSelect from "@/components/rhf-select";
-import RHFTextarea from "@/components/rhf-textarea";
-import TextField from "@/components/TextField";
 import Title from "@/components/title";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Header from "@/layout/header";
 import { t } from "i18next";
@@ -14,7 +10,7 @@ import { Link } from "react-router-dom";
 import UserInfoForm from "@/components/user-info-form";
 
 const InvoiceDetails = () => {
-  const [items, setItems] = useState([
+  const [items, _setItems] = useState([
     {
       id: 1,
       title: "عباية تطريز ذهبي - 50 - مطرز",

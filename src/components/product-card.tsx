@@ -3,10 +3,7 @@ import homeimage2 from "@/assets/to-delete/home-image2.jpg";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
-  CardHeader,
-  CardTitle,
 } from "./ui/card";
 
 interface ProductCardProps {
@@ -18,9 +15,7 @@ interface ProductCardProps {
 
 export function ProductCard({
   title,
-  subtitle,
   price,
-  imageUrl,
 }: ProductCardProps) {
   return (
     <Link to="/item-1" className="block">

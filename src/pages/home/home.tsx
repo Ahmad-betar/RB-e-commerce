@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/carousel";
 import image from "@/assets/to-delete/home image.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TextField from "@/components/TextField";
 import Header from "@/layout/header";
 import Footer from "@/layout/footer";
 
