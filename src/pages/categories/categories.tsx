@@ -23,23 +23,25 @@ const Categories = () => {
         </p>
       </div>
 
-      <div className="flex gap-10">
+      <div className="grid grid-cols-2 gap-0 justify-start px-5 flex-grow">
         <RHFSelect
-          className="w-60"
+          className="w-32 md:w-60"
           items={[]}
           label=""
+          labelOnright
           placeholder="form.sort"
         />
 
         <RHFSelect
-          className="w-60"
+          className="w-32 md:w-60"
           items={[]}
           label=""
+          labelOnright
           placeholder="form.filter"
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 p-20">
+      <div className="grid grid-cols-2 py-10 px-5 md:px-20 gap-4 md:grid-cols-4 lg:grid-cols-6">
         {products.map((product, index) => (
           <ProductCard key={index} {...product} />
         ))}

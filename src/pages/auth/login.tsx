@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="flex justify-center items-center w-screen h-screen bg-gray-50">
-      <Card className="w-1/2 p-4">
+      <Card className="md:w-1/2 p-4">
         <CardContent className="flex flex-col justify-between gap-8">
           <TextField
             label="form.enter_username"

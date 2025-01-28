@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import CartItem from "./cart-item";
 import Title from "@/components/title";
 import CouponInput from "@/components/coupon-input";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [items, setItems] = useState([
@@ -75,13 +76,25 @@ const Cart = () => {
           </div>
 
           <div className="flex justify-end gap-8 ">
-            <Button variant="secondary" className="w-40">
+            <Link
+              to={"/invoice-details"}
+              className={buttonVariants({
+                variant: "secondary",
+                className: "w-40",
+              })}
+            >
               الدفع
-            </Button>
+            </Link>
 
-            <Button variant="outline" className="w-40">
+            <Link
+              to={"/"}
+              className={buttonVariants({
+                variant: "outline",
+                className: "w-40",
+              })}
+            >
               متابعة التسوق
-            </Button>
+            </Link>
           </div>
         </div>
       </main>

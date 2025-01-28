@@ -23,7 +23,7 @@ export function ProductCard({
   imageUrl,
 }: ProductCardProps) {
   return (
-    <Link to="#" className="block">
+    <Link to="/item-1" className="block">
       <Card className="bg-gray-100">
         <CardContent className="p-2">
           <div className="relative">

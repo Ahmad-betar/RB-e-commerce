@@ -12,6 +12,7 @@ const Routes = () => {
   const Item = lazy(() => import("@/pages/item/item-page"));
   const Item2 = lazy(() => import("@/pages/item/item-page2"));
   const InvoiceDetails = lazy(() => import("@/pages/invoice/invoice-details"));
+  const InvoicePayment = lazy(() => import("@/pages/invoice/invoice-payment"));
 
   return (
     <ReactRoutes>
@@ -90,6 +91,15 @@ const Routes = () => {
         element={
           <Suspense fallback={<LoadingSpinner />}>
             <InvoiceDetails />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/invoice-payment"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <InvoicePayment />
           </Suspense>
         }
       />

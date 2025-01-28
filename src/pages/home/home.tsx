@@ -32,7 +32,8 @@ export default function Home() {
   return (
     <div className="">
       <Header />
-      <main className="container mx-auto px-20 py-8">
+
+      <main className="container mx-auto px-5 md:px-20 py-8">
         {/* Hero Section */}
 
         <section className=" flex flex-col justify-center items-center mb-32 text-center">
@@ -58,7 +59,7 @@ export default function Home() {
         {/* Categories Section */}
         <section className="mb-12">
           <h2 className="mb-6 text-center text-2xl font-bold">التصنيفات</h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
             {categories.map((category, index) => (
               <CategoryCard
                 key={index}
@@ -79,7 +80,7 @@ export default function Home() {
             </TabsList>
 
             <TabsContent value="popular">
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {products.map((product, index) => (
                   <ProductCard key={index} {...product} />
                 ))}
@@ -87,7 +88,7 @@ export default function Home() {
             </TabsContent>
 
             <TabsContent value="newest">
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {products.map((product, index) => (
                   <ProductCard key={index} {...product} />
                 ))}
@@ -95,7 +96,7 @@ export default function Home() {
             </TabsContent>
 
             <TabsContent value="most-sell">
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {products.map((product, index) => (
                   <ProductCard key={index} {...product} />
                 ))}

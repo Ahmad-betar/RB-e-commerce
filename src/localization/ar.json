@@ -44,7 +44,8 @@
     "product_discount": "خصم المنتجات",
     "count": "المجموع",
     "total": "المجموع الكلي",
-    "complete_order": "الذهاب لإتمام الطلب"
+    "complete_order": "الذهاب لإتمام الطلب",
+    "payment_type": "طريقة الدفع"
   },
   "item": {
     "abaya": "العباية",
@@ -70,5 +71,18 @@
     "invoice_details": "تفاصيل الفاتورة",
     "order_summary": "ملخص الطلبية"
   },
-  "cart": { "cart": "السلة", "cart_content": "محتويات السلة" }
+  "cart": { "cart": "السلة", "cart_content": "محتويات السلة" },
+  "menu": {
+    "main": "الرئيسية",
+    "categories": "التصنيفات",
+    "cart": "السلة",
+    "login": "تسجيل الدخول",
+    "create_account": "أنشئ حساب",
+    "contact_us": "تواصل معنا",
+    "money": "العملة",
+    "language": "اللغة",
+    "my_orders": "طلباتي",
+    "or": "أو",
+    "personal_setting": "إعدادات الحساب"
+  }
 }

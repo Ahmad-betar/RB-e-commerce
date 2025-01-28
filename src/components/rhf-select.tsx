@@ -34,7 +34,7 @@ const RHFSelect = ({
           "flex items-center font-bold mb-0 p-1": labelOnright,
         })}
       >
-        {t(label) + ":"}
+        {t(label) + (label ? ":" : "")}
       </Label>
 
       <Select>

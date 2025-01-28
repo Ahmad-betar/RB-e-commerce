@@ -3,27 +3,33 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import home from "@/assets/home.svg";
 import categories from "@/assets/categories.svg";
+import instagram from "@/assets/instagram.svg";
+import { t } from "i18next";
+import Sidebar from "./side-bar";
 
 function Header() {
   return (
     <header className="flex flex-col bg-[#E6DED7] px-4 pt-2 w-full">
       <div className="flex items-center justify-between w-full shadow-sm">
-        <Link
-          to="/"
-          className="text-2xl font-bold px-6 border-l-2 border-l-black"
-        >
+        <div className="flex md:hidden items-center gap-4">
+          <Sidebar />
+
+          <img src={instagram} className="w-10" alt="" />
+        </div>
+
+        <Link to="/" className="text-2xl px-6 md:border-l-2 md:border-l-black">
           <img src={logo} alt="" />
         </Link>
 
-        <div className="flex items-center gap-40">
-          <Link to="/" className=" flex gap-1 text-lg font-bold">
+        <div className="hidden md:flex items-center gap-40">
+          <Link to="/" className=" flex gap-2 text-lg font-bold">
             <img src={home} alt="" />
-            الرئيسية
+            {t("menu.main")}
           </Link>
 
-          <Link to="/categories" className="flex text-lg font-bold">
+          <Link to="/categories" className="flex gap-2 text-lg font-bold">
             <img className="" src={categories} alt="" />
-            {/* التصنيفات */}
+            {t("menu.categories")}
           </Link>
         </div>
 
@@ -37,9 +43,13 @@ function Header() {
               0
             </span>
           </Link>
-          <button aria-label="User account">
+          <Link
+            to={"/account-info"}
+            className="hidden md:flex"
+            aria-label="User account"
+          >
             <User className="h-6 w-6" />
-          </button>
+          </Link>
         </div>
       </div>
 

@@ -8,7 +8,7 @@ interface CategoryCardProps {
 
 export function CategoryCard({ title, subtitle }: CategoryCardProps) {
   return (
-    <Link to={`/category/${title}`} className="">
+    <Link to={`/categories`} className="">
       <div className="rounded-xl border flex flex-col gap-4 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
         <img src={logo} className="mx-auto mb-4" />
         <img src={curvyline} alt="" />

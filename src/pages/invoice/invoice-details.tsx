@@ -10,6 +10,8 @@ import { t } from "i18next";
 import CartItem from "../cart/cart-item";
 import { useState } from "react";
 import Footer from "@/layout/footer";
+import { Link } from "react-router-dom";
+import UserInfoForm from "@/components/user-info-form";
 
 const InvoiceDetails = () => {
   const [items, setItems] = useState([
@@ -40,99 +42,7 @@ const InvoiceDetails = () => {
       <form className="flex flex-col">
         <Title text={"invoice.invoice_details"} />
 
-        <div className="grid grid-cols-3 gap-8 px-20">
-          <TextField
-            label="create_account.enter_name"
-            placeholder="create_account.enter_name"
-          />
-          <TextField
-            label="create_account.email"
-            placeholder="create_account.enter_email"
-          />
-          <div className="flex justify-between items-end gap-4">
-            <TextField
-              label="create_account.phone_number"
-              placeholder="create_account.enter_phone_number"
-            />
-
-            <Badge variant={"outline"} className="h-9 py-0 mr-2">
-              KW +986
-            </Badge>
-          </div>
-        </div>
-
-        <p className="text-4xl font-bold mt-8 mb-20 px-4">
-          {t("create_account.address")}
-        </p>
-
-        {/* Address info */}
-        <div className="grid grid-cols-3 gap-10 justify-between px-20 mb-10">
-          <RHFSelect
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.country"),
-            })}
-            items={[]}
-            label="create_account.country"
-          />
-          <RHFSelect
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.governorate"),
-            })}
-            items={[]}
-            label="create_account.governorate"
-          />
-          <RHFSelect
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.region"),
-            })}
-            items={[]}
-            label="create_account.region"
-          />
-
-          <TextField
-            label="create_account.street"
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.street"),
-            })}
-          />
-          <TextField
-            label="create_account.Avenue"
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.Avenue"),
-            })}
-          />
-          <TextField
-            label="create_account.house"
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.house"),
-            })}
-          />
-          <TextField
-            label="create_account.floor"
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.floor"),
-            })}
-          />
-          <TextField
-            label="create_account.building"
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.building"),
-            })}
-          />
-          <TextField
-            label="create_account.apartment"
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.apartment"),
-            })}
-          />
-
-          <RHFTextarea
-            label="create_account.another_details"
-            placeholder={t("form.enter_obj", {
-              obj: t("create_account.another_details"),
-            })}
-          />
-        </div>
+        <UserInfoForm />
 
         <p className="text-4xl font-bold">{t("invoice.order_summary")}</p>
 
@@ -182,9 +92,14 @@ const InvoiceDetails = () => {
           </div>
 
           <div className="flex justify-end gap-8 ">
-            <Button variant="secondary" className="w-fit px-8 font-bold mb-10">
-              {t("form.complete_order")}
-            </Button>
+            <Link to={"/invoice-payment"}>
+              <Button
+                variant="secondary"
+                className="w-fit px-8 font-bold mb-10"
+              >
+                {t("form.complete_order")}
+              </Button>
+            </Link>
           </div>
         </div>
       </form>

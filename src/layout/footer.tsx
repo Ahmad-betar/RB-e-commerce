@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center gap-2 border-t w-full px-8 mt-10">
+    <footer className="flex justify-between items-center gap-2 border-t w-full px-8 py-2 mt-10">
       <div>
         <h3 className="mb-4 font-semibold">وسائل التواصل</h3>
         <div className="flex gap-4">
