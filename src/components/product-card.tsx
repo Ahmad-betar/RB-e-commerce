@@ -17,6 +17,8 @@ export function ProductCard({
   title,
   price,
 }: ProductCardProps) {
+
+  
   return (
     <Link to="/item-1" className="block">
       <Card className="bg-gray-100">
