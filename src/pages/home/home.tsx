@@ -36,7 +36,7 @@ export default function Home() {
         {/* Hero Section */}
 
         <section className=" flex flex-col justify-center items-center mb-32 text-center">
-          <Carousel className="w-full " opts={{ direction: "rtl" }}>
+          <Carousel className="w-full relative" opts={{ direction: "rtl" }}>
             <CarouselContent>
               {Array.from({ length: 5 }).map((_, index) => (
                 <CarouselItem key={index}>
@@ -46,8 +46,8 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselNext />
-            <CarouselPrevious />
+            <CarouselNext className="absolute right-0" />
+            <CarouselPrevious className="absolute left-0" />
           </Carousel>
 
           <h1 className="mt-6 text-3xl font-bold">
