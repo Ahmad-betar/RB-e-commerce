@@ -10,7 +10,7 @@ export const get_products = async (params: any) => {
   return data;
 };
 
-export const get_one_product = async (params: any) => {
+export const get_one_product = async (_params: any) => {
   const { data } = await axiosInstance.get(
     API_BASE_URL + API_ROUTES.product.getOne
   );

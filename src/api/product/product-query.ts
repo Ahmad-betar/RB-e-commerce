@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { get_one_product, get_products } from "./products-api";
 
-export const getProductsQuery = async (params: any) => {
+export const getProductsQuery = async (_params: any) => {
   const queryResults = useQuery({
     queryKey: ["get-products"],
     queryFn: async () => {
@@ -15,7 +15,7 @@ export const getProductsQuery = async (params: any) => {
   return queryResults;
 };
 
-export const getOneProductsQuery = async (params: any) => {
+export const getOneProductsQuery = async (_params: any) => {
   const queryResults = useQuery({
     queryKey: ["get-product"],
     queryFn: async () => {
