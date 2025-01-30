@@ -11,17 +11,17 @@ export const axiosInstance = axsio.create({
   },
 });
 
-axiosInstance.interceptors.request.use((config) => {
+axiosInstance.interceptors.request.use((config: any) => {
   config.headers.Authorization = "Bearer " + localStorage.getItem("token");
 
   return config;
 });
 
 axiosInstance.interceptors.response.use(
-  (response) => {
+  (response: any) => {
     return Promise.resolve(response);
   },
-  (errors) => {
+  (errors: any) => {
     // if (errors.response.status === 401) {
     //   window.location.href = "/sign-in";
     // }

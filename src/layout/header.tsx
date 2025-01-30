@@ -14,15 +14,18 @@ function Header() {
         <div className="flex md:hidden items-center gap-4">
           <Sidebar />
 
-          <img src={instagram} className="w-10" alt="" />
+          <img src={instagram} className="w-5" />
         </div>
 
-        <Link to="/" className="text-2xl px-6 md:border-l-2 md:border-l-black">
+        <Link
+          to="/"
+          className="max-md:w-10 max-md:h-10 text-2xl md:px-6 md:border-l-2 md:border-l-black"
+        >
           <img src={logo} alt="" />
         </Link>
 
         <div className="hidden md:flex items-center gap-40">
-          <Link to="/" className=" flex gap-2 text-lg font-bold">
+          <Link to="/" className=" flex items-center gap-2 text-lg font-bold">
             <img src={home} alt="" />
             {t("menu.main")}
           </Link>
@@ -53,7 +56,7 @@ function Header() {
         </div>
       </div>
 
-      <span className="h-8 flex items-center text-white">
+      <span className="h-8 max-md:h-4 max-md:text-xs flex items-center text-white">
         عبايات جديدة ومنوعة وجودة عالية
       </span>
     </header>

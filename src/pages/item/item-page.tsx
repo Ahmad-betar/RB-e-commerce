@@ -1,7 +1,6 @@
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
 import image from "@/assets/to-delete/home image.png";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { t } from "i18next";
 import Title from "@/components/title";
@@ -9,6 +8,11 @@ import RHFSelect from "@/components/rhf-select";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import hijab from "@/assets/hijab-badge.svg";
+import RHFCarousel from "@/components/rhf-carousel";
+import RHFTextarea from "@/components/rhf-textarea";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import logo from "@/assets/logo.svg";
+import { Label } from "@/components/ui/label";
 
 const ItemPage = () => {
   const products = Array(8).fill({
@@ -21,33 +25,22 @@ const ItemPage = () => {
     <>
       <Header />
 
-      {/* Item Page Content */}
-      <div className="grid grid-cols-5 items-start gap-0 md:gap-x-8 p-5 md:p-20">
-        {/* Left column with scrollable images */}
-        <div className="grid col-span-1 gap-4 h-full overflow-y-auto">
-          {new Array(5).fill(0).map((_, index) => (
-            <Card className="w-fit">
-              <CardContent className="p-1">
-                <img key={index} src={image} className="h-auto w-20" />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      <div className="flex justify-center mx-auto w-fit relative">
+        <img src={image} className="max-md:h-[60vh]" />
 
-        <div className="grid col-span-4 grid-cols-3 relative">
-          {/* Center column */}
-          <img src={image} className="col-span-3" />
+        <div className="flex flex-col gap-2 w-fit absolute -left-14 md:-left-20 top-10">
+          <img className="w-28" src={hijab} alt="" />
 
-          {/* Right column */}
-          <div className="flex flex-col gap-2 w-fit absolute -left-0">
-            <img className="w-28" src={hijab} alt="" />
-
-            <Badge className="bg-red-500 self-end rounded-sm w-fit">
-              25% -
-            </Badge>
-          </div>
+          <Badge className="bg-red-500 self-end rounded-sm w-fit">25% -</Badge>
         </div>
       </div>
+
+      <RHFCarousel
+        card
+        items={[image, image, image, image, image, image, image, image, image]}
+        className="my-5"
+        itemClassName="basis-1/2 md:basis-1/2 lg:basis-1/4 h-32"
+      />
 
       <Title text="item.classic_abaya" />
 
@@ -62,7 +55,7 @@ const ItemPage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-20 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-20 my-5">
         <RHFSelect
           items={[]}
           labelOnright
@@ -76,9 +69,32 @@ const ItemPage = () => {
           label="item.abaya_type"
           placeholder={t("form.enter_obj", { obj: t("item.abaya_type") })}
         />
+
+        <RHFTextarea label="item.notes" labelOnRight />
       </div>
 
-      <div className="flex justify-around px-5 md:px-20">
+      <div className="flex items-center gap-4 mr-1 px-5 md:px-20 my-5">
+        <Label className="font-bold">Logo :</Label>
+
+        <Tabs defaultValue="account">
+          <TabsList className="flex gap-2">
+            <TabsTrigger
+              className="p-0 w-10 h-10 rounded-full border data-[state=active]:border-black"
+              value="account"
+            >
+              <img src={logo} alt="" />
+            </TabsTrigger>
+            <TabsTrigger
+              className="p-0 w-10 h-10 rounded-full border data-[state=active]:border-black"
+              value="password"
+            >
+              <img src={logo} alt="" />
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      {/* <div className="flex justify-around px-5 md:px-20">
         <div>
           <p className="text-lg md:text-2xl font-bold">{t("item.details")} :</p>
           <ul>
@@ -93,9 +109,9 @@ const ItemPage = () => {
           <p className="text-lg md:text-2xl font-bold">{t("item.notes")} :</p>
           <p className="">اريده مطرز فضي مع اكمام عريضة</p>
         </div>
-      </div>
+      </div> */}
 
-      <div className="flex flex-col-reverse md:flex-row gap-4 justify-around px-5 md:px-20 my-20">
+      <div className="flex flex-col-reverse md:flex-row gap-4 justify-around px-5 md:px-20 my-5">
         <Button>{t("form.add_to_cart")}</Button>
 
         <div className="flex justify-between gap-4">
@@ -106,7 +122,7 @@ const ItemPage = () => {
         </div>
       </div>
 
-      <p className="mx-auto text-center text-2xl my-10">{t("home.popular")}</p>
+      <p className="mx-auto text-center text-2xl my-5">{t("home.popular")}</p>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6 px-5 md:px-20">
         {products.map((product, index) => (

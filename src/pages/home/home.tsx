@@ -1,16 +1,10 @@
 import { CategoryCard } from "@/components/category-card";
 import { ProductCard } from "@/components/product-card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import image from "@/assets/to-delete/home image.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/layout/header";
 import Footer from "@/layout/footer";
+import RHFCarousel from "@/components/rhf-carousel";
 
 export default function Home() {
   const categories = [
@@ -32,30 +26,12 @@ export default function Home() {
     <div className="">
       <Header />
 
-      <main className="container mx-auto px-5 md:px-20 py-8">
-        {/* Hero Section */}
+      <main className="container mx-auto px-5 md:px-20 pb-8">
 
-        <section className=" flex flex-col justify-center items-center mb-32 text-center">
-          <Carousel className="w-full relative" opts={{ direction: "rtl" }}>
-            <CarouselContent>
-              {Array.from({ length: 5 }).map((_, index) => (
-                <CarouselItem key={index}>
-                  <div className="mx-auto max-w-4xl">
-                    <img src={image} className="mx-auto" />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselNext className="absolute right-0" />
-            <CarouselPrevious className="absolute left-0" />
-          </Carousel>
-
-          <h1 className="mt-6 text-3xl font-bold">
-            أكثر من مجرد <span className="text-secondary">عباية</span>
-          </h1>
+        <section className=" flex flex-col justify-center items-center mb-2 text-center">
+          <RHFCarousel items={[image, image, image, image, image]} />
         </section>
 
-        {/* Categories Section */}
         <section className="mb-12">
           <h2 className="mb-6 text-center text-2xl font-bold">التصنيفات</h2>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-3">

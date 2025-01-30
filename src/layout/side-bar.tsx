@@ -4,11 +4,7 @@ import cart from "@/assets/cart.svg";
 import my_orders from "@/assets/my-orders.svg";
 import kwit from "@/assets/kwit.svg";
 import personal_setting from "@/assets/personal-setting.svg";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import home from "@/assets/home.svg";
@@ -20,7 +16,7 @@ const Sidebar = () => {
   return (
     <Drawer direction="right">
       <DrawerTrigger>
-        <Button className="bg-white p-2 rounded-full shadow-none w-10 h-10">
+        <Button className="flex items-center p-2 rounded-full bg-transparent shadow-none w-10 h-10 max-md:w-5 max-md:h-5 max-md:p-0">
           <img src={lines} className="w-full" alt="" />
         </Button>
       </DrawerTrigger>
