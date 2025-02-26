@@ -1,22 +1,21 @@
 import { Link } from "react-router-dom";
-import curvyline from "@/assets/curvy-line.svg";
+import { Card, CardContent } from "./ui/card";
 import logo from "@/assets/logo.svg";
 interface CategoryCardProps {
   title: string;
   subtitle: string;
 }
 
-export function CategoryCard({ title, subtitle }: CategoryCardProps) {
+export function CategoryCard({ title }: CategoryCardProps) {
   return (
     <Link to={`/categories`} className="">
-      <div className="rounded-xl border flex flex-col gap-4 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
-        <img src={logo} className="mx-auto mb-4" />
-        <img src={curvyline} alt="" />
-        <h3 className="flex justify-center gap-1 text-lg font-semibold text-gray-900">
-          {title}
-          <p className="text-secondary">{subtitle}</p>
-        </h3>
-      </div>
+      <Card className="p-2 shadow-none border bg-secondary">
+        <CardContent className="flex flex-col items-center p-0">
+          <img src={logo} className="mb-4" />
+
+          <h3 className="font-bold">{title}</h3>
+        </CardContent>
+      </Card>
     </Link>
   );
 }

@@ -11,11 +11,13 @@ const RHFCarousel = ({
   items,
   className,
   itemClassName,
+  imgClassName,
   card = false,
 }: {
   items: string[];
   className?: string;
   itemClassName?: string;
+  imgClassName?: string;
   card?: boolean;
 }) => {
   return (
@@ -31,7 +33,10 @@ const RHFCarousel = ({
                 "border border-gray-100 shadow-lg": card,
               })}
             >
-              <img src={item} className="mx-auto h-full w-auto" />
+              <img
+                src={item}
+                className={cn("mx-auto h-full w-auto", imgClassName)}
+              />
             </div>
           </CarouselItem>
         ))}

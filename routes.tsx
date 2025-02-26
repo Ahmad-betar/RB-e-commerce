@@ -103,6 +103,14 @@ const Routes = () => {
           </Suspense>
         }
       />
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <>Page not found</>
+          </Suspense>
+        }
+      />
     </ReactRoutes>
   );
 };

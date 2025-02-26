@@ -6,10 +6,18 @@ import categories from "@/assets/categories.svg";
 import instagram from "@/assets/instagram.svg";
 import { t } from "i18next";
 import Sidebar from "./side-bar";
+import kwit from "@/assets/kwit.svg";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 function Header() {
   return (
-    <header className="flex flex-col bg-[#E6DED7] px-4 pt-2 w-full">
+    <header className="flex flex-col bg-secondary px-4 pt-2 w-full">
       <div className="flex items-center justify-between w-full shadow-sm">
         <div className="flex md:hidden items-center gap-4">
           <Sidebar />
@@ -37,6 +45,19 @@ function Header() {
         </div>
 
         <div className="flex gap-4">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <img src={kwit} alt="" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>kwit</DropdownMenuItem>
+              <DropdownMenuItem>kwit</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <button aria-label="Search">
             <Search className="h-6 w-6" />
           </button>

@@ -27,14 +27,18 @@ export default function Home() {
       <Header />
 
       <main className="container mx-auto px-5 md:px-20 pb-8">
-
         <section className=" flex flex-col justify-center items-center mb-2 text-center">
-          <RHFCarousel items={[image, image, image, image, image]} />
+          <RHFCarousel
+            className="h-[50vh] w-auto"
+            itemClassName="h-full w-auto"
+            imgClassName="h-[50vh]"
+            items={[image, image, image, image, image]}
+          />
         </section>
 
         <section className="mb-12">
           <h2 className="mb-6 text-center text-2xl font-bold">التصنيفات</h2>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {categories.map((category, index) => (
               <CategoryCard
                 key={index}

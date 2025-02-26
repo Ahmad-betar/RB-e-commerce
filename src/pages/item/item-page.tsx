@@ -4,15 +4,15 @@ import image from "@/assets/to-delete/home image.png";
 import { Badge } from "@/components/ui/badge";
 import { t } from "i18next";
 import Title from "@/components/title";
-import RHFSelect from "@/components/rhf-select";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import hijab from "@/assets/hijab-badge.svg";
 import RHFCarousel from "@/components/rhf-carousel";
 import RHFTextarea from "@/components/rhf-textarea";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import logo from "@/assets/logo.svg";
-import { Label } from "@/components/ui/label";
+import RhfTab from "@/components/rhf-tabs";
+import RhfDialog from "@/components/rhf-dialog";
+import sizes from "@/assets/sizes.jpg";
 
 const ItemPage = () => {
   const products = Array(8).fill({
@@ -26,9 +26,9 @@ const ItemPage = () => {
       <Header />
 
       <div className="flex justify-center mx-auto w-fit relative">
-        <img src={image} className="max-md:h-[60vh]" />
+        <img src={image} className="h-[60vh]" />
 
-        <div className="flex flex-col gap-2 w-fit absolute -left-14 md:-left-20 top-10">
+        <div className="flex flex-col gap-2 w-fit absolute -left-4 md:-left-20 top-10">
           <img className="w-28" src={hijab} alt="" />
 
           <Badge className="bg-red-500 self-end rounded-sm w-fit">25% -</Badge>
@@ -39,12 +39,12 @@ const ItemPage = () => {
         card
         items={[image, image, image, image, image, image, image, image, image]}
         className="my-5"
-        itemClassName="basis-1/2 md:basis-1/2 lg:basis-1/4 h-32"
+        itemClassName="basis-1/6 md:basis-1/12 lg:basis-1/12 h-fit"
       />
 
       <Title text="item.classic_abaya" />
 
-      <div className="flex justify-between px-5 md:px-20">
+      <div className="flex justify-between px-5 md:px-20 basis-1/">
         <h2 className="text-xl md:text-4xl font-semibold">
           {t("item.abaya_gold")}
         </h2>
@@ -55,61 +55,47 @@ const ItemPage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-20 my-5">
-        <RHFSelect
+      <div className="grid grid-cols-1 gap-4 px-5 md:px-10 my-4">
+        {/* <RHFSelect
           items={[]}
           labelOnright
           label="item.size"
           placeholder={t("form.enter_obj", { obj: t("item.size") })}
-        />
+        /> */}
 
-        <RHFSelect
+        {/* <RHFSelect
           items={[]}
           labelOnright
           label="item.abaya_type"
           placeholder={t("form.enter_obj", { obj: t("item.abaya_type") })}
+        /> */}
+
+        <div className="flex gap-2">
+          <RhfTab
+            images={false}
+            label="item.size"
+            elements={["16", "17", "18", "19", "20", "21", "22", "23"]}
+          />
+
+          <RhfDialog
+            trigger={<img className="w-10 h-10 rounded-md" src={sizes} />}
+            content={<img src={sizes} />}
+          />
+        </div>
+
+        <RhfTab
+          images={false}
+          label="item.abaya_type"
+          elements={["12", "13", "16", "15"]}
         />
 
-        <RHFTextarea label="item.notes" labelOnRight />
+        <RhfTab images label="item.logo" elements={[logo, logo, logo]} />
+
+        <p className="text-xs">
+          اذا كان القياس XL فـ اكثر الرجاء الكتابه في الملاحظات
+        </p>
+        <RHFTextarea  label="item.notes" />
       </div>
-
-      <div className="flex items-center gap-4 mr-1 px-5 md:px-20 my-5">
-        <Label className="font-bold">Logo :</Label>
-
-        <Tabs defaultValue="account">
-          <TabsList className="flex gap-2">
-            <TabsTrigger
-              className="p-0 w-10 h-10 rounded-full border data-[state=active]:border-black"
-              value="account"
-            >
-              <img src={logo} alt="" />
-            </TabsTrigger>
-            <TabsTrigger
-              className="p-0 w-10 h-10 rounded-full border data-[state=active]:border-black"
-              value="password"
-            >
-              <img src={logo} alt="" />
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
-
-      {/* <div className="flex justify-around px-5 md:px-20">
-        <div>
-          <p className="text-lg md:text-2xl font-bold">{t("item.details")} :</p>
-          <ul>
-            <li>اللون الاسود</li>
-            <li>اللون الاسود</li>
-            <li>اللون الاسود</li>
-            <li>اللون الاسود</li>
-          </ul>
-        </div>
-
-        <div className="">
-          <p className="text-lg md:text-2xl font-bold">{t("item.notes")} :</p>
-          <p className="">اريده مطرز فضي مع اكمام عريضة</p>
-        </div>
-      </div> */}
 
       <div className="flex flex-col-reverse md:flex-row gap-4 justify-around px-5 md:px-20 my-5">
         <Button>{t("form.add_to_cart")}</Button>

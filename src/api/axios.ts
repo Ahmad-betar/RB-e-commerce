@@ -1,7 +1,7 @@
 import axsio from "axios";
 
 export const BASE_URL = "https://commonsensesqaure.pythonanywhere.com/";
-export const API_BASE_URL = "https://commonsensesqaure.pythonanywhere.com/api/";
+export const API_BASE_URL = "https://rb-o8z2.onrender.com/";
 
 export const axiosInstance = axsio.create({
   baseURL: API_BASE_URL,
