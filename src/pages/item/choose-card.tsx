@@ -2,8 +2,10 @@ import RHFSelect from "@/components/rhf-select";
 import TextField from "@/components/TextField";
 import { Label } from "@/components/ui/label";
 import { t } from "i18next";
+import { useForm } from "react-hook-form";
 
 const ChooseCard = ({ label }: { label: string }) => {
+  const { control } = useForm();
   return (
     <div className="flex flex-col gap-8 flex-grow">
       <Label className="text-3xl font-bold">{t(label)}</Label>
@@ -34,6 +36,8 @@ const ChooseCard = ({ label }: { label: string }) => {
           })}
         />
         <TextField
+          control={control}
+          name=""
           label="item.notes"
           placeholder={t("form.enter_obj", {
             obj: t("item.notes"),

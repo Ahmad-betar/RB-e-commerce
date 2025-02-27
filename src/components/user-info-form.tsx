@@ -11,20 +11,23 @@ const UserInfoForm = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-5 md:px-20">
         <TextField
-          name=""
+          name="name"
           control={control}
           label="create_account.create_account"
           placeholder="create_account.enter_name"
         />
         <TextField
-          name=""
+          type="email"
+          name="email"
           control={control}
           label="create_account.email"
           placeholder="create_account.enter_email"
         />
+
         <div className="flex justify-between items-end gap-4">
           <TextField
-            name=""
+            type="number"
+            name="phone"
             control={control}
             label="create_account.phone_number"
             placeholder="create_account.enter_phone_number"
@@ -34,6 +37,14 @@ const UserInfoForm = () => {
             KW +986
           </Badge>
         </div>
+
+        <TextField
+          type="password"
+          name="password"
+          control={control}
+          label="form.enter_password"
+          placeholder="form.enter_password"
+        />
       </div>
 
       <p className="text-4xl font-bold mt-8 mb-20 px-4">

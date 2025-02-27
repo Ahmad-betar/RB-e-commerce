@@ -1,5 +1,10 @@
-import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
-import { add_to_cart, delete_cart, get_cart } from "./cart-api";
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { add_to_cart, change_item_quantity, delete_cart, get_cart } from "./cart-api";
 
 export const getCartQuery = () => {
   const queryResults = useQuery({
@@ -16,18 +21,39 @@ export const getCartQuery = () => {
 };
 
 export const addToCartQuery = () => {
+  const queryClient = useQueryClient();
+
   const queryResults = useMutation({
-    mutationKey: ["add-to-cart"],
     mutationFn: add_to_cart,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
   });
 
   return queryResults;
 };
 
 export const deleteCartQuery = () => {
+  const queryClient = useQueryClient();
+
   const queryResults = useMutation({
-    mutationKey: ["delete-cart"],
     mutationFn: delete_cart,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
+
+  return queryResults;
+};
+
+export const changeItemQuantityQuery = () => {
+  const queryClient = useQueryClient();
+
+  const queryResults = useMutation({
+    mutationFn: change_item_quantity,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
   });
 
   return queryResults;

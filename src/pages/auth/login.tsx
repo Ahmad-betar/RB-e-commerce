@@ -3,32 +3,20 @@ import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { t } from "i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { loginType } from "@/api/authentication/type";
 
 const Login = () => {
-  const { control, reset, handleSubmit } = useForm<loginType>();
+  const navigate = useNavigate();
+  const { control, handleSubmit } = useForm<loginType>();
   const { mutate, isPending } = loginQuery();
 
   const submitHandler = (values: loginType) => {
-    console.log(values);
-
     mutate(values, {
       onSuccess: (data) => {
-        console.log("Full Response:", data); // Log the entire response
-        const headers = data.headers; // Access headers
-        console.log("Headers:", headers);
-
-        // If the token is in a specific header, access it here
-        const token = headers["authorization"] || headers["Authorization"];
-        console.log("Token:", token);
-
-        if (token) {
-          localStorage.setItem("token", token); // Store the token if it exists
-        } else {
-          console.error("Token not found in headers");
-        }
+        localStorage.setItem("token", data.data.JWT);
+        navigate("/");
       },
     });
   };

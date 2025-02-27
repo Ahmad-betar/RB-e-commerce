@@ -9,3 +9,8 @@ export interface signupType {
   phone: number;
   name: string;
 }
+
+export interface resetPassword {
+  newPassword: string;
+  token: string;
+}

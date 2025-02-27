@@ -10,7 +10,7 @@
     "email": "بريد الكتروني",
     "enter_email": "ادخل بريدك الالكتروني",
     "phone_number": "رقم الهاتف",
-    "enter_phone_number": "ادخل رقمك الالكتروني",
+    "enter_phone_number": "ادخل رقمك",
     "address": "العنوان",
     "country": "البلد",
     "governorate": "المحافظة",
@@ -45,7 +45,8 @@
     "count": "المجموع",
     "total": "المجموع الكلي",
     "complete_order": "الذهاب لإتمام الطلب",
-    "payment_type": "طريقة الدفع"
+    "payment_type": "طريقة الدفع",
+    "payment" : "الدفع"
   },
   "item": {
     "abaya": "العباية",
@@ -73,7 +74,7 @@
     "invoice_details": "تفاصيل الفاتورة",
     "order_summary": "ملخص الطلبية"
   },
-  "cart": { "cart": "السلة", "cart_content": "محتويات السلة" },
+  "cart": { "cart": "السلة", "cart_content": "محتويات السلة","shopping" : "متابعة التسوق" },
   "menu": {
     "main": "الرئيسية",
     "categories": "التصنيفات",

@@ -5,6 +5,7 @@ import { Route, Routes as ReactRoutes } from "react-router-dom";
 
 const Routes = () => {
   const Login = lazy(() => import("@/pages/auth/login"));
+  const RequestPasswordReset = lazy(() => import("@/pages/auth/request-password-reset"));
   const CreateAccount = lazy(() => import("@/pages/auth/create-account"));
   const Home = lazy(() => import("@/pages/home/home"));
   const Cart = lazy(() => import("@/pages/cart/cart"));
@@ -29,6 +30,14 @@ const Routes = () => {
         element={
           <Suspense fallback={<LoadingSpinner />}>
             <CreateAccount create />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/request-reset-password"
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <RequestPasswordReset />
           </Suspense>
         }
       />

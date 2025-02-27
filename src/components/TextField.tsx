@@ -18,6 +18,7 @@ const TextField = ({
   labelOnRight,
   control,
   name,
+  ...props
 }: TextFieldProps) => {
   return (
     <div
@@ -36,6 +37,7 @@ const TextField = ({
             placeholder={t(placeholder || "")}
             className="mr-4"
             {...field}
+            {...props}
           />
         )}
       />

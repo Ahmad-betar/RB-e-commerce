@@ -1,46 +1,23 @@
 import { buttonVariants } from "@/components/ui/button";
-import { useState } from "react";
 import CartItem from "./cart-item";
 import Title from "@/components/title";
 import CouponInput from "@/components/coupon-input";
 import { Link } from "react-router-dom";
+import { getCartQuery } from "@/api/cart/cart-query";
+import LoadingSpinner from "@/components/ui/loading";
+import { t } from "i18next";
 
 const Cart = () => {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      title: "عباية تطريز ذهبي - 50 - مطرز",
-      price: 70,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      title: "عباية تطريز ذهبي - 50 - مطرز",
-      price: 70,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      title: "عباية تطريز ذهبي - 50 - مطرز",
-      price: 70,
-      quantity: 1,
-    },
-  ]);
+  const { data, isLoading } = getCartQuery();
 
-  const updateQuantity = (id: number, quantity: number) => {
-    setItems(
-      items.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
-  };
-
-  const deleteItem = (id: number) => {
-    setItems(items.filter((item) => item.id !== id));
-  };
-
-  const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const total = data?.data.cart.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+
+  console.log(data);
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <>
@@ -48,18 +25,20 @@ const Cart = () => {
         <Title text="cart.cart" />
 
         <div className="mb-4 text-lg font-semibold px-4 md:px-12 lg:px-20">
-          محتويات السلة:
+          {t("cart.cart_content")}
         </div>
 
         <div className="flex flex-col gap-4 px-4 md:px-12 lg:px-20">
-          {items.map((item) => (
+          {data?.data.cart.map((item) => (
             <CartItem
-              key={item.id}
-              title={item.title}
-              price={item.price}
+              key={item._id}
+              id={item._id}
+              title={item.product.title}
+              notes={item.notes}
+              size={item.size}
+              price={item.product.price}
               quantity={item.quantity}
-              onQuantityChange={(quantity) => updateQuantity(item.id, quantity)}
-              onDelete={() => deleteItem(item.id)}
+              onQuantityChange={(quantity) => {}}
             />
           ))}
         </div>
@@ -69,8 +48,8 @@ const Cart = () => {
             <CouponInput />
 
             <div className="flex items-center justify-between gap-10 text-xl font-bold">
-              <span>المجموع الكلي:</span>
-              <span>{total.toFixed(2)} د.ك</span>
+              <span>{t("form.total")}</span>
+              <span>{total?.toFixed(2)} د.ك</span>
             </div>
           </div>
 
@@ -82,7 +61,7 @@ const Cart = () => {
                 className: "w-40",
               })}
             >
-              الدفع
+              {t("form.payment")}
             </Link>
 
             <Link
@@ -92,7 +71,7 @@ const Cart = () => {
                 className: "w-40",
               })}
             >
-              متابعة التسوق
+              {t("cart.shopping")}
             </Link>
           </div>
         </div>

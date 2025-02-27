@@ -1,16 +1,12 @@
 import "./App.css";
 import Routes from "../routes";
-// import Header from "./layout/header";
-// import Footer from "./layout/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 function App() {
   return (
     <>
-      {/* <Header /> */}
-
       <Routes></Routes>
-
-      {/* <Footer /> */}
+      <Toaster />
     </>
   );
 }

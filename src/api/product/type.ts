@@ -1,18 +1,17 @@
-export interface ProductType {
+export interface productType {
+  _id: string;
+  name: string;
+  parentProductType: { _id: string; name: string } | undefined;
+}
+
+export interface productDetails {
   _id: string;
   title: string;
   description: string;
   price: number;
   logoUrl: string;
   imagesUrls: string[];
-  productType: {
-    _id: string;
-    name: string;
-    parentProductType: {
-      _id: string;
-      name: string;
-    };
-  };
+  productType: productType;
   weight: number;
   createdAt: Date;
 }
@@ -25,5 +24,5 @@ export interface getProductType {
   totalPages: number;
   hasNextPage: boolean;
   hasPreviousPage: boolean;
-  data: ProductType[];
+  data: productDetails[];
 }

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import homeimage2 from "@/assets/to-delete/home-image2.jpg";
 import { Card, CardContent, CardFooter } from "./ui/card";
-import { buttonVariants } from "./ui/button";
-import { t } from "i18next";
+// import { buttonVariants } from "./ui/button";
+// import { t } from "i18next";
 
 interface ProductCardProps {
   title: string;

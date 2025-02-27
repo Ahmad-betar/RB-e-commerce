@@ -1,6 +1,5 @@
 import axsio from "axios";
 
-export const BASE_URL = "https://commonsensesqaure.pythonanywhere.com/";
 export const API_BASE_URL = "https://rb-o8z2.onrender.com/";
 
 export const axiosInstance = axsio.create({
@@ -12,7 +11,7 @@ export const axiosInstance = axsio.create({
 });
 
 axiosInstance.interceptors.request.use((config: any) => {
-  config.headers.Authorization = "Bearer " + localStorage.getItem("token");
+  config.headers.Authorization = localStorage.getItem("token");
 
   return config;
 });

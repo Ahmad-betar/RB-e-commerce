@@ -8,9 +8,12 @@ export const API_ROUTES = {
     get: "customer/cart",
     delete: "customer/cart",
     add: "customer/cart",
+    update: "customer/changeItemQuantity",
   },
   authentication: {
     login: "customer/login",
     signUp: "customer/signup",
+    resetPassword: "resetPassword",
+    requestPasswordReset: "customer/requestPasswordReset",
   },
 };
