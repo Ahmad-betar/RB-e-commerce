@@ -8,6 +8,7 @@ import {
 import { Label } from "./ui/label";
 import { t } from "i18next";
 import { cn } from "@/lib/utils";
+import { Controller, useFormContext } from "react-hook-form";
 
 interface Props {
   items: { label: string; value: string }[];
@@ -15,6 +16,9 @@ interface Props {
   placeholder?: string;
   className?: string;
   labelOnright?: boolean;
+  name: string;
+  control: any;
+  disabled?: boolean;
 }
 const RHFSelect = ({
   items,
@@ -22,6 +26,9 @@ const RHFSelect = ({
   className,
   label,
   labelOnright,
+  name,
+  disabled,
+  control,
 }: Props) => {
   return (
     <div
@@ -37,18 +44,26 @@ const RHFSelect = ({
         {t(label) + (label ? ":" : "")}
       </Label>
 
-      <Select>
-        <SelectTrigger
-          className={cn("mr-4", { "mr-0 w-full": labelOnright }, className)}
-        >
-          <SelectValue placeholder={t(placeholder ?? "")} />
-        </SelectTrigger>
-        <SelectContent>
-          {items.map(({ label, value }) => (
-            <SelectItem value={value}>{label}</SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => (
+          <Select disabled={disabled} {...field} onValueChange={field.onChange}>
+            <SelectTrigger
+              className={cn("mr-4", { "mr-0 w-full": labelOnright }, className)}
+            >
+              <SelectValue placeholder={t(placeholder ?? "")} />
+            </SelectTrigger>
+            <SelectContent>
+              {items.map(({ label, value }) => (
+                <SelectItem key={value} value={value}>
+                  {t(label)}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+      />
     </div>
   );
 };

@@ -3,10 +3,10 @@ import { Badge } from "./ui/badge";
 import RHFSelect from "./rhf-select";
 import { t } from "i18next";
 import RHFTextarea from "./rhf-textarea";
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 const UserInfoForm = () => {
-  const { control } = useForm();
+  const { control } = useFormContext();
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-5 md:px-20">
@@ -47,12 +47,7 @@ const UserInfoForm = () => {
         />
       </div>
 
-      <p className="text-4xl font-bold mt-8 mb-20 px-4">
-        {t("create_account.address")}
-      </p>
-
-      {/* Address info */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-between px-5 md:px-20 mb-10">
+      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-between px-5 md:px-20 mb-10">
         <RHFSelect
           placeholder={t("form.enter_obj", {
             obj: t("create_account.country"),
@@ -75,55 +70,6 @@ const UserInfoForm = () => {
           label="create_account.region"
         />
 
-        {/* <TextField
-          name=""
-          control={control}
-          label="create_account.street"
-          placeholder={t("form.enter_obj", {
-            obj: t("create_account.street"),
-          })}
-        />
-        <TextField
-          name=""
-          control={control}
-          label="create_account.Avenue"
-          placeholder={t("form.enter_obj", {
-            obj: t("create_account.Avenue"),
-          })}
-        />
-        <TextField
-          name=""
-          control={control}
-          label="create_account.house"
-          placeholder={t("form.enter_obj", {
-            obj: t("create_account.house"),
-          })}
-        />
-        <TextField
-          name=""
-          control={control}
-          label="create_account.floor"
-          placeholder={t("form.enter_obj", {
-            obj: t("create_account.floor"),
-          })}
-        />
-        <TextField
-          name=""
-          control={control}
-          label="create_account.building"
-          placeholder={t("form.enter_obj", {
-            obj: t("create_account.building"),
-          })}
-        />
-        <TextField
-          name=""
-          control={control}
-          label="create_account.apartment"
-          placeholder={t("form.enter_obj", {
-            obj: t("create_account.apartment"),
-          })}
-        /> */}
-
         <RHFTextarea
           name=""
           control={control}
@@ -141,7 +87,7 @@ const UserInfoForm = () => {
             obj: t("create_account.another_details"),
           })}
         />
-      </div>
+      </div> */}
     </>
   );
 };

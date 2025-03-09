@@ -3,12 +3,12 @@ import { Card, CardContent } from "./ui/card";
 import logo from "@/assets/logo.svg";
 interface CategoryCardProps {
   title: string;
-  subtitle: string;
+  id: string;
 }
 
-export function CategoryCard({ title }: CategoryCardProps) {
+export function CategoryCard({ title, id }: CategoryCardProps) {
   return (
-    <Link to={`/categories`} className="">
+    <Link to={`/categories/` + id} className="">
       <Card className="p-2 shadow-none border bg-secondary">
         <CardContent className="flex flex-col items-center p-0">
           <img src={logo} className="mb-4" />

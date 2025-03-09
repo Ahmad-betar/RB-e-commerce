@@ -26,7 +26,6 @@ const CartItem = ({
   quantity,
 }: CartItemProps) => {
   const { mutate: Delete } = deleteCartQuery();
-  // const { mutate: Add, isPending } = addToCartQuery();
   const { mutate: changeQuantity, isPending: isChanging } =
     changeItemQuantityQuery();
 
@@ -54,6 +53,7 @@ const CartItem = ({
                 onClick={() =>
                   changeQuantity({ itemId: id, quantityChange: 1 })
                 }
+                type="button"
                 className="py-0 px-1 h-fit font-bold bg-transparent shadow-none hover:bg-transparent text-secondary"
               >
                 +
@@ -66,6 +66,7 @@ const CartItem = ({
                 onClick={() =>
                   changeQuantity({ itemId: id, quantityChange: -1 })
                 }
+                type="button"
                 className="py-0 px-1 h-fit font-bold bg-transparent shadow-none hover:bg-transparent text-secondary"
               >
                 -

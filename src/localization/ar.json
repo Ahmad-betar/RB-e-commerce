@@ -1,6 +1,7 @@
 {
   "auth": {
-    "create_account": "أنشئ حساب"
+    "create_account": "أنشئ حساب",
+    "forget_password": "نسيت كلمة المرور"
   },
   "create_account": {
     "create_account": "أنشئ حساب",
@@ -25,7 +26,9 @@
     "another_details": " تفاصيل اخرى"
   },
   "categories": {
-    "categories": "التصنيفات"
+    "categories": "التصنيفات",
+    "asc": "تصاعديا",
+    "desc": "تنازليا"
   },
   "form": {
     "enter_obj": "ادخل {{obj}}",
@@ -46,7 +49,17 @@
     "total": "المجموع الكلي",
     "complete_order": "الذهاب لإتمام الطلب",
     "payment_type": "طريقة الدفع",
-    "payment" : "الدفع"
+    "payment": "الدفع",
+    "form_success": "تمت العملية بنجاح",
+    "form_error": "لقد حدث خطأ",
+    "token": "الكود",
+    "required": "هذا الحقل مطلوب",
+    "order": "طلب",
+    "paid": "مدفوع",
+    "not_paid": "غير مدفوع",
+    "proceed": "إتمام الدفع",
+    "back": "عودة",
+    "pay": "ادفع"
   },
   "item": {
     "abaya": "العباية",
@@ -58,8 +71,8 @@
     "details": "تفاصيل التصميم",
     "notes": "ملاحظات",
     "count": "كمية",
-    "logo" : "لوغو",
-    "get_item" : "تسوق سريع",
+    "logo": "لوغو",
+    "get_item": "تسوق سريع",
     "offers_collections": "كولكشن العروض",
     "choose_one": " اختيارك الأول من المجموعة",
     "choose_two": " اختيارك الأول من المجموعة",
@@ -74,7 +87,12 @@
     "invoice_details": "تفاصيل الفاتورة",
     "order_summary": "ملخص الطلبية"
   },
-  "cart": { "cart": "السلة", "cart_content": "محتويات السلة","shopping" : "متابعة التسوق" },
+  "cart": {
+    "cart": "السلة",
+    "cart_content": "محتويات السلة",
+    "shopping": "متابعة التسوق",
+    "added_to_cart": "تم الإضافة إلى السلة"
+  },
   "menu": {
     "main": "الرئيسية",
     "categories": "التصنيفات",
@@ -87,5 +105,26 @@
     "my_orders": "طلباتي",
     "or": "أو",
     "personal_setting": "إعدادات الحساب"
+  },
+  "order": {
+    "got_coupon": "هل لديك كود خصم؟",
+    "order_id": "رقم الطلب",
+    "order_status": "حالة الطلب",
+    "order_date": "تاريخ الطلب",
+    "payment_status": "حالة الدفع",
+    "total_price": "السعر الكلي",
+    "deliviry_price": "سعر التوصيل",
+    "status": {
+      "Pending": "قيد الانتظار",
+      "Processing": "قيد المعالجة",
+      "Cut": "مقصوص",
+      "Sewn": "مخيط",
+      "Delivering": "جارٍ التوصيل",
+      "Completed": "مكتمل"
+    }
+  },
+  "pagination": {
+    "prev": "السابق",
+    "next": "التالي"
   }
 }

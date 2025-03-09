@@ -14,7 +14,7 @@ export const login = async (params: loginType) => {
 };
 
 export const signup = async (params: signupType) => {
-  const { data } = await axios.post<signupType>(
+  const { data } = await axios.post(
     API_BASE_URL + API_ROUTES.authentication.signUp,
     params
   );

@@ -11,6 +11,7 @@ import home from "@/assets/home.svg";
 import categories from "@/assets/categories.svg";
 import instagram from "@/assets/instagram.svg";
 import { t } from "i18next";
+import { hasToken } from "@/lib/token";
 
 const Sidebar = () => {
   return (
@@ -50,7 +51,7 @@ const Sidebar = () => {
             {t("menu.cart")}
           </Link>
 
-          <Link to={"/"} className="flex gap-2">
+          <Link to={"/orders"} className="flex gap-2">
             <img
               className="w-6 stroke-secondary fill-secondary"
               src={my_orders}
@@ -60,26 +61,28 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        <div className="flex flex-col flex-grow items-center justify-center">
-          <Link to={"/login"} className="underline text-secondary">
-            {t("menu.login")}
-          </Link>
+        {!hasToken() && (
+          <div className="flex flex-col flex-grow items-center justify-center">
+            <Link to={"/login"} className="underline text-secondary">
+              {t("menu.login")}
+            </Link>
 
-          {t("menu.or")}
+            {t("menu.or")}
 
-          <Link to={"/create-account"} className="underline text-secondary">
-            {t("menu.create_account")}
-          </Link>
+            <Link to={"/create-account"} className="underline text-secondary">
+              {t("menu.create_account")}
+            </Link>
 
-          <Link to={"/"} className="hidden flex gap-2 self-start">
-            <img
-              className="w-6 stroke-secondary fill-secondary"
-              src={personal_setting}
-              alt=""
-            />
-            {t("menu.personal_setting")}
-          </Link>
-        </div>
+            <Link to={"/"} className="hidden flex gap-2 self-start">
+              <img
+                className="w-6 stroke-secondary fill-secondary"
+                src={personal_setting}
+                alt=""
+              />
+              {t("menu.personal_setting")}
+            </Link>
+          </div>
+        )}
 
         <div className="flex flex-col flex-grow justify-end gap-4">
           {t("menu.contact_us")}

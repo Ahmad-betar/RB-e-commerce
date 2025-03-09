@@ -4,6 +4,7 @@ import logo from "@/assets/logo.svg";
 import home from "@/assets/home.svg";
 import categories from "@/assets/categories.svg";
 import instagram from "@/assets/instagram.svg";
+import orders from "@/assets/my-orders.svg";
 import { t } from "i18next";
 import Sidebar from "./side-bar";
 import kwit from "@/assets/kwit.svg";
@@ -14,8 +15,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { getCartQuery } from "@/api/cart/cart-query";
 
 function Header() {
+  const { data } = getCartQuery();
+
   return (
     <header className="flex flex-col bg-secondary px-4 pt-2 w-full">
       <div className="flex items-center justify-between w-full shadow-sm">
@@ -42,6 +46,11 @@ function Header() {
             <img className="" src={categories} alt="" />
             {t("menu.categories")}
           </Link>
+
+          <Link to="/orders" className="flex gap-2 text-lg font-bold">
+            <img className="" src={orders} alt="" />
+            {t("menu.my_orders")}
+          </Link>
         </div>
 
         <div className="flex gap-4">
@@ -58,13 +67,13 @@ function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <button aria-label="Search">
+          {/* <button aria-label="Search">
             <Search className="h-6 w-6" />
-          </button>
+          </button> */}
           <Link to="/cart" className="relative">
             <ShoppingCart className="h-6 w-6" />
             <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-black text-xs text-white">
-              0
+              {data?.data.cart.length ?? 0}
             </span>
           </Link>
           <Link

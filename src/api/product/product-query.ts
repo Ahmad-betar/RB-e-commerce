@@ -1,11 +1,12 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { get_one_product, get_products } from "./products-api";
+import { get_best_seller, get_one_product, get_products } from "./products-api";
+import { getProductParams } from "./type";
 
-export const getProductsQuery = () => {
+export const getProductsQuery = (params?: getProductParams) => {
   const queryResults = useQuery({
-    queryKey: ["get-products"],
+    queryKey: ["get-products", { ...params }],
     queryFn: async () => {
-      const data = await get_products();
+      const data = await get_products(params);
 
       return data;
     },
@@ -15,11 +16,25 @@ export const getProductsQuery = () => {
   return queryResults;
 };
 
-export const getOneProductsQuery = async (_params: any) => {
+export const getOneProductsQuery = (id: string) => {
   const queryResults = useQuery({
     queryKey: ["get-product"],
     queryFn: async () => {
-      const data = await get_one_product({});
+      const data = await get_one_product(id);
+
+      return data;
+    },
+    placeholderData: keepPreviousData,
+  });
+
+  return queryResults;
+};
+
+export const getBestSellerQuery = () => {
+  const queryResults = useQuery({
+    queryKey: ["get-best-seller"],
+    queryFn: async () => {
+      const data = await get_best_seller();
 
       return data;
     },

@@ -5,122 +5,54 @@ import { Route, Routes as ReactRoutes } from "react-router-dom";
 
 const Routes = () => {
   const Login = lazy(() => import("@/pages/auth/login"));
-  const RequestPasswordReset = lazy(() => import("@/pages/auth/request-password-reset"));
+  const RequestPasswordReset = lazy(
+    () => import("@/pages/auth/request-password-reset")
+  );
+  const PasswordReset = lazy(() => import("@/pages/auth/reset-password"));
   const CreateAccount = lazy(() => import("@/pages/auth/create-account"));
   const Home = lazy(() => import("@/pages/home/home"));
   const Cart = lazy(() => import("@/pages/cart/cart"));
+  const Orders = lazy(() => import("@/pages/order/orders"));
+  const Order = lazy(() => import("@/pages/order/order"));
   const Categories = lazy(() => import("@/pages/categories/categories"));
+  const CategoryProduct = lazy(
+    () => import("@/pages/categories/category-products")
+  );
   const Item = lazy(() => import("@/pages/item/item-page"));
   const Item2 = lazy(() => import("@/pages/item/item-page2"));
+  const Invoice = lazy(() => import("@/pages/invoice/invoice"));
   const InvoiceDetails = lazy(() => import("@/pages/invoice/invoice-details"));
   const InvoicePayment = lazy(() => import("@/pages/invoice/invoice-payment"));
 
   return (
-    <ReactRoutes>
-      <Route
-        path="/login"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <Login />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/create-account"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <CreateAccount create />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/request-reset-password"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <RequestPasswordReset />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/account-info"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <CreateAccount create={false} />
-          </Suspense>
-        }
-      />
+    <Suspense fallback={<LoadingSpinner />}>
+      <ReactRoutes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/create-account" element={<CreateAccount create />} />
+        <Route
+          path="/request-reset-password"
+          element={<RequestPasswordReset />}
+        />
+        <Route path="/reset-password" element={<PasswordReset />} />
+        <Route
+          path="/account-info"
+          element={<CreateAccount create={false} />}
+        />
 
-      <Route
-        path="/"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <Home />
-          </Suspense>
-        }
-      />
-
-      <Route
-        path="/categories"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <Categories />
-          </Suspense>
-        }
-      />
-
-      <Route
-        path="/cart"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <Cart />
-          </Suspense>
-        }
-      />
-
-      <Route
-        path="/item-1"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <Item />
-          </Suspense>
-        }
-      />
-
-      <Route
-        path="/item-2"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <Item2 />
-          </Suspense>
-        }
-      />
-
-      <Route
-        path="/invoice-details"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <InvoiceDetails />
-          </Suspense>
-        }
-      />
-
-      <Route
-        path="/invoice-payment"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <InvoicePayment />
-          </Suspense>
-        }
-      />
-      <Route
-        path="*"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <>Page not found</>
-          </Suspense>
-        }
-      />
-    </ReactRoutes>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/:id" element={<CategoryProduct />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/orders/:id" element={<Order />} />
+        <Route path="/product/:id" element={<Item />} />
+        <Route path="/item-2" element={<Item2 />} />
+        <Route path="/invoice-details" element={<InvoiceDetails />} />
+        <Route path="/invoice-payment" element={<InvoicePayment />} />
+        <Route path="/invoice" element={<Invoice />} />
+        <Route path="*" element={<>Page not found</>} />
+      </ReactRoutes>
+    </Suspense>
   );
 };
 

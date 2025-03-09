@@ -1,27 +1,34 @@
 import { Link } from "react-router-dom";
-import homeimage2 from "@/assets/to-delete/home-image2.jpg";
 import { Card, CardContent, CardFooter } from "./ui/card";
-// import { buttonVariants } from "./ui/button";
-// import { t } from "i18next";
 
 interface ProductCardProps {
+  id: string;
   title: string;
   subtitle: string;
   price: number;
   imageUrl: string;
 }
 
-export function ProductCard({ title, subtitle, price }: ProductCardProps) {
+export function ProductCard({
+  id,
+  title,
+  subtitle,
+  price,
+  imageUrl,
+}: ProductCardProps) {
   return (
-    <Link to={"item-1"}>
+    <Link to={"/product/" + id}>
       <Card className="rounded-none p-0 border-none">
-        <CardContent className="p-0">
-          <div className="relative">
-            <img className="w-full h-full" src={homeimage2} />
+        <CardContent className="p-0 h-40">
+          <div className="relative h-full w-full">
+            <img
+              className="object-cover w-full h-full rounded-md"
+              src={imageUrl}
+            />
 
-            <div className="absolute left-2 top-2 rounded-lg bg-red-500 px-2 py-1 text-xs text-white">
+            {/* <div className="absolute left-2 top-2 rounded-lg bg-red-500 px-2 py-1 text-xs text-white">
               25% -
-            </div>
+            </div> */}
           </div>
         </CardContent>
 

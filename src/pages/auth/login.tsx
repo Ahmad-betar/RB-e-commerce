@@ -27,14 +27,13 @@ const Login = () => {
       className="flex justify-center items-center w-screen h-screen bg-gray-50"
     >
       <Card className="md:w-1/2 p-4">
-        <CardContent className="flex flex-col justify-between gap-8">
+        <CardContent className="flex flex-col justify-between gap-4">
           <TextField
             control={control}
             name="email"
             label="form.enter_username"
             placeholder="form.enter_email_password"
           />
-
           <TextField
             control={control}
             name="password"
@@ -42,10 +41,16 @@ const Login = () => {
             placeholder="form.please_password"
           />
 
+          <Link
+            to={"/request-reset-password"}
+            className="text-secondary underline"
+          >
+            {t("auth.forget_password")}
+          </Link>
+
           <Button className="w-fit self-center" disabled={isPending}>
             {t("form.continue")}
           </Button>
-
           <p className="self-center">
             {t("form.dont_have_account") + " "}
             <Link to={"/create-account"} className="text-secondary underline">

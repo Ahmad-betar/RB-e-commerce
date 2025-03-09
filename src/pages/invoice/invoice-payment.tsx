@@ -1,59 +1,134 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import Footer from "@/layout/footer";
-import Header from "@/layout/header";
 import paymentcard from "@/assets/payment-card.svg";
 import { t } from "i18next";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import card from "@/assets/master-card.svg";
-import f from "@/assets/f.svg";
-import knet from "@/assets/k-net.svg";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { useForm } from "react-hook-form";
+import { useCreateOrderMutation } from "@/api/order/order-query";
+import { checkoutResponse } from "@/api/checkout/type";
 
-const InvoicePayment = () => {
+interface InvoicePaymentType {
+  onChange: VoidFunction;
+  data: checkoutResponse | undefined;
+}
+
+const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
+  const { handleSubmit, register } = useForm();
+  const { mutate, isPending } = useCreateOrderMutation();
+
+  const onSubmit = (payload: any) => {
+    console.log(payload);
+  };
+
   return (
-    <div className="flex flex-col justify-between h-screen">
-      <Header />
-
-      <div className="flex-grow flex items-center">
-        <Card className="md:w-1/4 mx-auto h-fit">
-          <CardHeader className="flex-row gap-5 font-bold py-2 px-5 items-center border-b border-b-gray-300">
-            <img className="w-5 h-5" src={paymentcard} alt="" />
-            {t("form.payment_type")}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col items-center gap-6 my-8">
+        {/* Payment Summary Card */}
+        <Card className="w-full max-w-2xl">
+          <CardHeader className="font-bold py-4 px-6 border-b">
+            <span>{t("invoice.order_summary")}</span>
           </CardHeader>
 
-          <CardContent className="p-5">
-            <RadioGroup
-              className="flex flex-col gap-8"
-              defaultValue="comfortable"
-            >
-              <div className="flex items-center gap-3">
-                <RadioGroupItem value="default" id="r1" />
-                <img className="w-5 h-5" src={card} alt="" />
-                <Label className="font-medium" htmlFor="r1">
-                  Knet by Myfatoorah
-                </Label>
-              </div>
-              <div className="flex items-center gap-3">
-                <RadioGroupItem value="comfortable" id="r2" />
-                <img className="w-5 h-5" src={f} alt="" />
-                <Label className="font-medium" htmlFor="r2">
-                  Master card - VISA by Myfatoorah{" "}
-                </Label>
-              </div>
-              <div className="flex items-center gap-3">
-                <RadioGroupItem value="compact" id="r3" />
-                <img className="w-5 h-5" src={knet} alt="" />
-                <Label className="font-medium" htmlFor="r3">
-                  دول الخليج - Myfatoorah
-                </Label>
-              </div>
+          <CardContent className="p-6 space-y-4">
+            <div className="flex justify-between">
+              <Label className="text-sm text-gray-600">{t("form.total")}</Label>
+              <Label className="text-sm font-semibold">
+                ${data?.totalProductPrice.toFixed(2)}
+              </Label>
+            </div>
+
+            <div className="flex justify-between">
+              <Label className="text-sm text-gray-600">
+                {t("form.discount")}
+              </Label>
+              <Label className="text-sm font-semibold">
+                ${data?.discount.toFixed(2)}
+              </Label>
+            </div>
+
+            <div className="flex justify-between">
+              <Label className="text-sm text-gray-600">
+                {t("form.deliviry_price")}
+              </Label>
+              <Label className="text-sm font-semibold">
+                ${data?.deliveryCost.toFixed(2)}
+              </Label>
+            </div>
+
+            <Separator />
+
+            <div className="flex justify-between">
+              <Label className="text-sm font-bold">{t("form.total")}</Label>
+              <Label className="text-sm font-bold">
+                ${data?.totalAmount.toFixed(2)}
+              </Label>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Payment Methods Card */}
+        <Card className="w-full max-w-2xl">
+          <CardHeader className="flex items-center gap-3 font-bold py-4 px-6 border-b">
+            <img className="w-6 h-6" src={paymentcard} alt="Payment Icon" />
+            <span>{t("form.payment_type")}</span>
+          </CardHeader>
+
+          <CardContent className="p-6">
+            <RadioGroup {...register("paymentMethodId")} className="space-y-4">
+              {data?.paymentDetails.Data.PaymentMethods.map(
+                ({
+                  PaymentMethodId,
+                  ImageUrl,
+                  PaymentMethodAr,
+                  PaymentMethodCode,
+                }) => (
+                  <div
+                    key={PaymentMethodId}
+                    className="flex items-center gap-4 p-4 rounded-lg border hover:shadow-md transition-shadow"
+                  >
+                    <RadioGroupItem
+                      value={String(PaymentMethodId)}
+                      id={PaymentMethodCode}
+                    />
+                    <img
+                      className="w-8 h-8 object-contain"
+                      src={ImageUrl}
+                      alt={PaymentMethodAr}
+                    />
+                    <Label
+                      className="font-medium text-sm"
+                      htmlFor={PaymentMethodCode}
+                    >
+                      {PaymentMethodAr}
+                    </Label>
+                  </div>
+                )
+              )}
             </RadioGroup>
           </CardContent>
         </Card>
-      </div>
 
-      <Footer />
-    </div>
+        <Button
+          variant="secondary"
+          className="w-fit px-8 font-bold"
+          disabled={isPending}
+        >
+          {t("form.pay")}
+        </Button>
+
+        {/* Back Button */}
+        <Button
+          type="button"
+          variant="outline"
+          className="w-fit px-8 font-bold"
+          onClick={onChange}
+        >
+          {t("form.back")}
+        </Button>
+      </div>
+    </form>
   );
 };
 
