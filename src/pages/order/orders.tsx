@@ -26,7 +26,9 @@ const Orders = () => {
                 <CardContent className="pt-6">
                   <div className="flex justify-between">
                     <h6 className="font-sans text-sm">{_id}</h6>
-                    <Badge variant={"outline"}>{status}</Badge>
+                    <Badge variant={"outline"}>
+                      {t(`order.status.${status}`)}
+                    </Badge>
                   </div>
                   <h6 className="font-sans text-sm my-1">
                     {t("form.total")} : {totalAmount}

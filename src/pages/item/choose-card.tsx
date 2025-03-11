@@ -7,11 +7,13 @@ import { useForm } from "react-hook-form";
 const ChooseCard = ({ label }: { label: string }) => {
   const { control } = useForm();
   return (
-    <div className="flex flex-col gap-8 flex-grow">
-      <Label className="text-3xl font-bold">{t(label)}</Label>
+    <div className="flex flex-col gap-4 flex-grow">
+      <Label className="text-xl font-bold">{t(label)}</Label>
 
       <div className="flex flex-col gap-4">
         <RHFSelect
+          name=""
+          control={control}
           items={[]}
           label="item.abaya"
           labelOnright
@@ -20,6 +22,8 @@ const ChooseCard = ({ label }: { label: string }) => {
           })}
         />
         <RHFSelect
+          name=""
+          control={control}
           items={[]}
           label="item.size"
           labelOnright
@@ -28,6 +32,8 @@ const ChooseCard = ({ label }: { label: string }) => {
           })}
         />
         <RHFSelect
+          name=""
+          control={control}
           items={[]}
           label="item.abaya_type"
           labelOnright
@@ -36,8 +42,8 @@ const ChooseCard = ({ label }: { label: string }) => {
           })}
         />
         <TextField
-          control={control}
           name=""
+          control={control}
           label="item.notes"
           placeholder={t("form.enter_obj", {
             obj: t("item.notes"),

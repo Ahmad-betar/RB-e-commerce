@@ -1,14 +1,16 @@
-import { imageType } from "../uplaod-file.ts/type";
+import { imageType } from "../type";
 
 export interface getPopularResponse {
-  _id: string;
-  product: {
+  populars: {
     _id: string;
-    title: string;
-    price: number;
-    images: imageType[];
-  };
-  orderNumber: number;
+    product: {
+      _id: string;
+      title: string;
+      price: number;
+      images: imageType[];
+    };
+    orderNumber: number;
+  }[];
 }
 
 export interface addPopularPayload {

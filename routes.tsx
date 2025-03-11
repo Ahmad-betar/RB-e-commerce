@@ -21,8 +21,6 @@ const Routes = () => {
   const Item = lazy(() => import("@/pages/item/item-page"));
   const Item2 = lazy(() => import("@/pages/item/item-page2"));
   const Invoice = lazy(() => import("@/pages/invoice/invoice"));
-  const InvoiceDetails = lazy(() => import("@/pages/invoice/invoice-details"));
-  const InvoicePayment = lazy(() => import("@/pages/invoice/invoice-payment"));
 
   return (
     <Suspense fallback={<LoadingSpinner />}>
@@ -47,8 +45,6 @@ const Routes = () => {
         <Route path="/orders/:id" element={<Order />} />
         <Route path="/product/:id" element={<Item />} />
         <Route path="/item-2" element={<Item2 />} />
-        <Route path="/invoice-details" element={<InvoiceDetails />} />
-        <Route path="/invoice-payment" element={<InvoicePayment />} />
         <Route path="/invoice" element={<Invoice />} />
         <Route path="*" element={<>Page not found</>} />
       </ReactRoutes>

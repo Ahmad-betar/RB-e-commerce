@@ -22,18 +22,15 @@ const InvoiceDetails = ({ onChange, setData }: InvoiceDetailsType) => {
   const { mutate, isPending } = getCheckoutMutation();
 
   const onSubmit = (data: any) => {
-    console.log(data);
-
     mutate(
       { ...data, isUrgent: false },
       {
         onSuccess: (data: checkoutResponse) => {
-          console.log(data);
           setData(data);
           onChange();
         },
         onError: (data: any) => {
-          toast(data.response.data.message);
+          toast(t("form.form_error"));
         },
       }
     );
@@ -57,7 +54,7 @@ const InvoiceDetails = ({ onChange, setData }: InvoiceDetailsType) => {
             <CartItem
               key={item._id}
               id={item._id}
-              title={item.product.title}
+              title={item.product?.title}
               notes={item.notes}
               size={item.size}
               price={item.price}
@@ -84,7 +81,6 @@ const InvoiceDetails = ({ onChange, setData }: InvoiceDetailsType) => {
               variant="secondary"
               className="w-fit px-8 font-bold mb-10"
               onClick={() => {
-                // onChange();
                 onSubmit(methods.watch());
               }}
             >

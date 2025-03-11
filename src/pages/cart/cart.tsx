@@ -31,7 +31,7 @@ const Cart = () => {
             <CartItem
               key={item._id}
               id={item._id}
-              title={item.product.title}
+              title={item.product?.title}
               notes={item.notes}
               size={item.size}
               price={item.price}
@@ -53,7 +53,8 @@ const Cart = () => {
 
           <div className="flex justify-end gap-8 ">
             <Link
-              to={"/invoice-details"}
+              to={"/invoice"}
+              aria-disabled
               className={buttonVariants({
                 variant: "secondary",
                 className: "w-40",

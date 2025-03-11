@@ -1,8 +1,9 @@
 import { useOneOrderQuery } from "@/api/order/order-query";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Header from "@/layout/header";
 import { t } from "i18next";
+import { buttonVariants } from "@/components/ui/button";
 
 const Order = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const Order = () => {
     <div>
       <Header />
 
-      <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
+      <div className="p-6 bg-gray-50 rounded-lg shadow-sm w-full">
         {/* Order Summary */}
         <div className="mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -41,12 +42,7 @@ const Order = () => {
                 {data?.order.isPaid ? t("form.paid") : t("form.not_paid")}
               </p>
             </div>
-            <div>
-              <p className="text-sm text-gray-500">{t("order.total_price")}</p>
-              <p className="font-semibold">
-                ${data?.order.finalCost.toFixed(2)}
-              </p>
-            </div>
+
             <div>
               <p className="text-sm text-gray-500">
                 {t("order.deliviry_price")}
@@ -55,27 +51,30 @@ const Order = () => {
                 ${data?.order.deliveryCost.toFixed(2)}
               </p>
             </div>
+
+            <div>
+              <p className="text-sm text-gray-500">{t("order.total_price")}</p>
+              <p className="font-semibold">
+                ${data?.order.finalCost.toFixed(2)}
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Delivery Address */}
-        {/* <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">{t("create_account.address")}</h3>
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4">
+            {t("create_account.address")}
+          </h3>
           <div className="bg-white p-4 rounded-lg shadow-sm">
             <p>{data?.order?.deliveryAddress.area}</p>
-            <p>{data?.order?.deliveryAddress.street}</p>
-            <p>
-              {t("create_account.building")} {data?.order.deliveryAddress.building.number}, {t("create_account.floor")}{" "}
-              {data?.order.deliveryAddress.building.floor}, {t("create_account.apartment")}{" "}
-              {data?.order.deliveryAddress.building.apartment}
+
+            <p className="text-sm text-gray-500 mt-2">
+              {t("create_account.another_details")}:{" "}
+              {data?.order.deliveryAddress.notes}
             </p>
-            {data?.order.deliveryAddress.notes && (
-              <p className="text-sm text-gray-500 mt-2">
-                {t("create_account.another_details")}: {data?.order.deliveryAddress.notes}
-              </p>
-            )}
           </div>
-        </div> */}
+        </div>
 
         {/* Products List */}
         <div className="mb-8">
@@ -135,20 +134,16 @@ const Order = () => {
           </div>
         )}
 
-        {/* Payment URL */}
-        {data?.order.paymentUrl && (
-          <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-4">{t("form.payment")}</h3>
-            <a
-              href={data?.order.paymentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              {t("form.payment.proceed")}
-            </a>
-          </div>
-        )}
+        <Link
+          to={data?.order.paymentUrl!}
+          className={buttonVariants({
+            variant: "secondary",
+            className: "w-full",
+          })}
+          target="_blank"
+        >
+          {t("form.payment")}
+        </Link>
       </div>
     </div>
   );

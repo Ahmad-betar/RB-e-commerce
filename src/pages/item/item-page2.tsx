@@ -7,24 +7,22 @@ import Title from "@/components/title";
 import ChooseCard from "./choose-card";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
+import { FormProvider, useForm } from "react-hook-form";
+import { usePopularsQuery } from "@/api/popular/popular-query";
 
 const ItemPage2 = () => {
-  const products = Array(8).fill({
-    title: "عباية بيضاء",
-    price: 60,
-    imageUrl: "/placeholder.svg?height=400&width=400",
-  });
+  const methods = useForm();
+  const { data: popular } = usePopularsQuery();
+
   return (
-    <>
+    <FormProvider {...methods}>
       <Header />
 
-      <div className="grid grid-cols-5 grid-rows-1 items-start my-10">
-        <img
-          className="col-span-4 h-auto w-auto md:w-auto md:h-screen md:col-start-2 md:col-span-3"
-          src={image}
-          alt=""
-        />
-        <img className="col-span-1 w-28 mt-10" src={hijab} alt="" />
+      <div className="items-start mt-10 w-full">
+        <div className="relative w-fit mx-auto">
+          <img className="h-80" src={image} alt="" />
+          <img className="absolute -top-5 -left-10 w-28" src={hijab} alt="" />
+        </div>
       </div>
 
       <Title text="item.offers_collections" />
@@ -37,7 +35,7 @@ const ItemPage2 = () => {
         <p className="text-3xl text-secondary">70 د ك</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4 my-10 px-5 md:px-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4 px-5 md:px-20">
         <ChooseCard label="item.choose_one" />
         <ChooseCard label="item.choose_two" />
         <ChooseCard label="item.choose_three" />
@@ -48,13 +46,22 @@ const ItemPage2 = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6 px-5 md:px-20">
-        {products.map((product, index) => (
-          <ProductCard key={index} {...product} />
-        ))}
+        {popular?.populars.map(
+          ({ product: { _id, images, price, title } }, index) => (
+            <ProductCard
+              key={index}
+              id={_id}
+              imageUrl={images[0].url}
+              price={price}
+              title={title}
+              subtitle=""
+            />
+          )
+        )}
       </div>
 
       <Footer />
-    </>
+    </FormProvider>
   );
 };
 

@@ -68,7 +68,7 @@
     "abaya_gold": "عباية تطريز ذهبي",
     "size": "القياس",
     "abaya_type": "نوع العباية",
-    "details": "تفاصيل التصميم",
+    "details": "تفاصيل المنتجات",
     "notes": "ملاحظات",
     "count": "كمية",
     "logo": "لوغو",
@@ -126,5 +126,14 @@
   "pagination": {
     "prev": "السابق",
     "next": "التالي"
+  },
+
+  "product": {
+    "product": "المنتج",
+    "product_deleted": "تم حذف هذا المنتج"
+  },
+
+  "checkout" : {
+    "Checkout process failed" : ""
   }
 }

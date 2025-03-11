@@ -18,7 +18,6 @@ export default function Home() {
     getProductsTypeQuery();
 
   const { data: popular } = usePopularsQuery();
-
   const { data: newProducts } = getProductsQuery({
     limit: 10,
     sort: "name:desc",
@@ -36,7 +35,7 @@ export default function Home() {
             className="h-[50vh] w-auto"
             itemClassName="h-full w-auto"
             imgClassName="h-[50vh] object-cover"
-            items={banner?.images.map(({ url }) => url)!}
+            items={banner?.images.map(({ url }) => url)! ?? []}
           />
         </section>
 
@@ -60,7 +59,7 @@ export default function Home() {
 
             <TabsContent value="popular">
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {popular?.map(
+                {popular?.populars.map(
                   ({ product: { _id, images, price, title } }, index) => (
                     <ProductCard
                       key={index}

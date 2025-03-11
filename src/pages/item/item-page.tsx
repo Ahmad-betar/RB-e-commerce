@@ -165,7 +165,7 @@ const ProductPage = () => {
         <p className="mx-auto text-center text-2xl my-5">{t("home.popular")}</p>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6 px-5 md:px-20">
-          {popular?.map(({ product: { _id, images, price, title } }, index) => (
+          {popular?.populars.map(({ product: { _id, images, price, title } }, index) => (
             <ProductCard
               key={index}
               id={_id}
