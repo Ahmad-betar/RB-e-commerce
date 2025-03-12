@@ -1,8 +1,5 @@
 import TextField from "./TextField";
 import { Badge } from "./ui/badge";
-import RHFSelect from "./rhf-select";
-import { t } from "i18next";
-import RHFTextarea from "./rhf-textarea";
 import { useFormContext } from "react-hook-form";
 
 const UserInfoForm = () => {

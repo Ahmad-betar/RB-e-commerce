@@ -1,5 +1,4 @@
 import { useOneOrderQuery } from "@/api/order/order-query";
-import React from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "@/layout/header";
 import { t } from "i18next";

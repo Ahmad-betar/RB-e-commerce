@@ -61,13 +61,13 @@ const ProductPage = () => {
         <div className="flex justify-center mx-auto w-fit relative mt-8">
           <img src={img} className="h-[30vh] w-full object-cover rounded-sm" />
 
-          <div className="flex flex-col gap-2 w-fit absolute left-0 top-4">
+          {/* <div className="flex flex-col gap-2 w-fit opacity-90 absolute -left-20 -top-5">
             <img className="w-28" src={hijab} alt="" />
 
             <Badge className="bg-red-500 self-end rounded-sm w-fit">
               25% -
             </Badge>
-          </div>
+          </div> */}
         </div>
 
         <RHFCarousel
@@ -82,7 +82,7 @@ const ProductPage = () => {
           }
           vidoes={data?.data.videos.map((video) => video.url)}
           className="my-5 px-8"
-          itemClassName="basis-1/3 md:basis-1/6 lg:basis-1/12 rounded-md"
+          itemClassName="basis-1/3 md:basis-1/6 lg:basis-1/12 h-16"
         />
 
         <Title text="item.classic_abaya" />

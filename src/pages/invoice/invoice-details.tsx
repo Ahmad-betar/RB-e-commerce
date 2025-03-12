@@ -29,7 +29,7 @@ const InvoiceDetails = ({ onChange, setData }: InvoiceDetailsType) => {
           setData(data);
           onChange();
         },
-        onError: (data: any) => {
+        onError: () => {
           toast(t("form.form_error"));
         },
       }

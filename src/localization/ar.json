@@ -130,10 +130,18 @@
 
   "product": {
     "product": "المنتج",
-    "product_deleted": "تم حذف هذا المنتج"
+    "product_deleted": "تم حذف هذا المنتج",
+    "new_price": "السعر الجديد"
   },
 
-  "checkout" : {
-    "Checkout process failed" : ""
+  "checkout": {
+    "Checkout process failed": ""
+  },
+
+  "offers": {
+    "offers": "العروض",
+    "available": "العروض المتاحة",
+    "buy_get": "اشتر {{number}} واحصل على العرض",
+    "until": "صالح حتى"
   }
 }

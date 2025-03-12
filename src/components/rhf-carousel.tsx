@@ -46,7 +46,7 @@ const RHFCarousel = ({
             >
               <img
                 src={item}
-                className={cn("mx-auto h-full w-auto rounded-md", imgClassName)}
+                className={cn("mx-auto h-full w-auto", imgClassName)}
               />
             </div>
           </CarouselItem>

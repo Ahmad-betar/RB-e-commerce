@@ -1,4 +1,4 @@
-import { Search, ShoppingCart, User } from "lucide-react";
+import { DollarSign, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import home from "@/assets/home.svg";
@@ -36,7 +36,7 @@ function Header() {
           <img src={logo} alt="" />
         </Link>
 
-        <div className="hidden md:flex items-center gap-40">
+        <div className="hidden md:flex w-full px-10 items-center justify-between">
           <Link to="/" className=" flex items-center gap-2 text-lg font-bold">
             <img src={home} alt="" />
             {t("menu.main")}
@@ -51,9 +51,14 @@ function Header() {
             <img className="" src={orders} alt="" />
             {t("menu.my_orders")}
           </Link>
+
+          <Link to="/offers" className="flex gap-2 text-lg font-bold">
+            <DollarSign className="stroke-[#6f5c59]" />
+            {t("offers.offers")}
+          </Link>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">

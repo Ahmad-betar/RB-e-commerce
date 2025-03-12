@@ -65,4 +65,13 @@ export const API_ROUTES = {
   popular: {
     get: "populars",
   },
+
+  offer: {
+    get: "offers",
+    getOne: "offer/", //params
+    add: "admin/offer",
+    delete: "admin/offer/", //params
+    edit: "admin/offer/", //params
+    manageOfferProducts: "/admin/manageOfferProducts/",
+  },
 };

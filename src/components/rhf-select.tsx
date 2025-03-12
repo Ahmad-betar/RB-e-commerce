@@ -8,7 +8,7 @@ import {
 import { Label } from "./ui/label";
 import { t } from "i18next";
 import { cn } from "@/lib/utils";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller } from "react-hook-form";
 
 interface Props {
   items: { label: string; value: string }[];

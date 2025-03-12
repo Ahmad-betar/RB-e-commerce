@@ -20,6 +20,7 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
 
   const onSubmit = (payload: any) => {
     console.log(payload);
+    mutate(payload)
   };
 
   return (
