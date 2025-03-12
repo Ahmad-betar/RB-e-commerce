@@ -1,11 +1,9 @@
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
-import { Badge } from "@/components/ui/badge";
 import { t } from "i18next";
 import Title from "@/components/title";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
-import hijab from "@/assets/hijab-badge.svg";
 import RHFCarousel from "@/components/rhf-carousel";
 import RHFTextarea from "@/components/rhf-textarea";
 import RhfTab from "@/components/rhf-tabs";
@@ -165,16 +163,18 @@ const ProductPage = () => {
         <p className="mx-auto text-center text-2xl my-5">{t("home.popular")}</p>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6 px-5 md:px-20">
-          {popular?.populars.map(({ product: { _id, images, price, title } }, index) => (
-            <ProductCard
-              key={index}
-              id={_id}
-              imageUrl={images[0].url}
-              price={price}
-              title={title}
-              subtitle=""
-            />
-          ))}
+          {popular?.populars.map(
+            ({ product: { _id, images, price, title } }, index) => (
+              <ProductCard
+                key={index}
+                id={_id}
+                imageUrl={images[0].url}
+                price={price}
+                title={title}
+                subtitle=""
+              />
+            )
+          )}
         </div>
 
         <Footer />
