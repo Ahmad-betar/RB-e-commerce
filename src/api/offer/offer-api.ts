@@ -27,37 +27,3 @@ export const add_offer = async (payload: addOfferPayload) => {
   const { data } = await axiosInstance.post(API_ROUTES.offer.add, payload);
   return data;
 };
-
-// Delete an offer by ID
-export const delete_offer = async (id: string) => {
-  const { data } = await axiosInstance.delete(API_ROUTES.offer.delete + id);
-  return data;
-};
-
-// Edit an offer by ID
-export const edit_offer = async ({
-  id,
-  payload,
-}: {
-  id: string;
-  payload: Partial<addOfferPayload>;
-}) => {
-  const { data } = await axiosInstance.put(API_ROUTES.offer.edit + id, payload);
-
-  return data;
-};
-
-// Get products for an offer
-export const manage_offer_products = async ({
-  id,
-  payload,
-}: {
-  id: string;
-  payload: any;
-}) => {
-  const { data } = await axiosInstance.put(
-    API_ROUTES.offer.manageOfferProducts + id,
-    payload
-  );
-  return data;
-};

@@ -1,11 +1,17 @@
 import "./App.css";
 import Routes from "../routes";
 import { Toaster } from "@/components/ui/sonner";
+import { usePixelQuery } from "./api/pixel/pixel-query";
 
 function App() {
-  const test = document.getElementsByTagName("head")[0];
+  const { data } = usePixelQuery();
 
-  console.log({ test });
+  if (data?.meta)
+    document.getElementsByTagName("head")[0].innerHTML += data?.meta;
+  if (data?.snapchat)
+    document.getElementsByTagName("head")[0].innerHTML += data?.snapchat;
+  if (data?.tiktok)
+    document.getElementsByTagName("head")[0].innerHTML += data?.tiktok;
 
   return (
     <>

@@ -20,7 +20,6 @@ const Routes = () => {
     () => import("@/pages/categories/category-products")
   );
   const Item = lazy(() => import("@/pages/item/item-page"));
-  const Item2 = lazy(() => import("@/pages/item/item-page2"));
   const Invoice = lazy(() => import("@/pages/invoice/invoice"));
   const Offers = lazy(() => import("@/pages/offers/offers"));
   const Offer = lazy(() => import("@/pages/offers/offer"));
@@ -48,7 +47,6 @@ const Routes = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/orders/:id" element={<Order />} />
         <Route path="/product/:id" element={<Item />} />
-        <Route path="/item-2" element={<Item2 />} />
         <Route path="/invoice" element={<Invoice />} />
         <Route path="/temp-order/:id" element={<TempOrder />} />
         <Route path="/offers" element={<Offers />} />

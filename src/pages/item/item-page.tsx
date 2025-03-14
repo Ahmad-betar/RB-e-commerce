@@ -8,7 +8,6 @@ import RHFCarousel from "@/components/rhf-carousel";
 import RHFTextarea from "@/components/rhf-textarea";
 import RhfTab from "@/components/rhf-tabs";
 import RhfDialog from "@/components/rhf-dialog";
-import sizes from "@/assets/sizes.jpg";
 import { useParams } from "react-router-dom";
 import { getOneProductsQuery } from "@/api/product/product-query";
 import LoadingSpinner from "@/components/ui/loading";
@@ -60,14 +59,6 @@ const ProductPage = () => {
 
         <div className="flex justify-center mx-auto w-fit relative mt-8">
           <img src={img} className="h-[30vh] w-full object-cover rounded-sm" />
-
-          {/* <div className="flex flex-col gap-2 w-fit opacity-90 absolute -left-20 -top-5">
-            <img className="w-28" src={hijab} alt="" />
-
-            <Badge className="bg-red-500 self-end rounded-sm w-fit">
-              25% -
-            </Badge>
-          </div> */}
         </div>
 
         <RHFCarousel

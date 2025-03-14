@@ -19,6 +19,7 @@ interface Props {
   name: string;
   control: any;
   disabled?: boolean;
+  required?: boolean;
 }
 const RHFSelect = ({
   items,
@@ -29,6 +30,7 @@ const RHFSelect = ({
   name,
   disabled,
   control,
+  required,
 }: Props) => {
   return (
     <div
@@ -48,7 +50,12 @@ const RHFSelect = ({
         name={name}
         control={control}
         render={({ field }) => (
-          <Select disabled={disabled} {...field} onValueChange={field.onChange}>
+          <Select
+            required={required}
+            disabled={disabled}
+            {...field}
+            onValueChange={field.onChange}
+          >
             <SelectTrigger
               className={cn("mr-4", { "mr-0 w-full": labelOnright }, className)}
             >

@@ -84,4 +84,8 @@ export const API_ROUTES = {
     add: "customer/orderFromTempOrder",
     get: "customer/tempOrder/", //param
   },
+  
+  pixel: {
+    get: "/pixel",
+  },
 };

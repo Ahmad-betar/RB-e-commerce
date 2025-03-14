@@ -24,6 +24,7 @@ export const getOneProductsQuery = (id: string) => {
 
       return data;
     },
+    enabled: !!id,
     placeholderData: keepPreviousData,
   });
 

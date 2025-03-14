@@ -1,4 +1,4 @@
-import { productType } from "../product/type";
+import { ProductData } from "../product/type";
 import { imageType } from "../type";
 
 export interface OfferProduct {
@@ -30,20 +30,19 @@ export interface GetOffersResponse {
 }
 
 export interface addOfferPayload {
+  offerId: string;
   products: {
-    product: string;
-    newPrice: number;
+    productId: string;
+    size: number;
+    quantity: number;
     notes: string;
   }[];
-  description: string;
-  expirationDate: string;
-  numberOfProductsHaveToBuy: number;
 }
 
 /////////
 
 interface ProductItem {
-  product: productType;
+  product: ProductData;
   newPrice: string;
   notes: string;
   _id: string;

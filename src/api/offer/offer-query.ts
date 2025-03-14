@@ -4,14 +4,7 @@ import {
   keepPreviousData,
   useQueryClient,
 } from "@tanstack/react-query";
-import {
-  get_offers,
-  get_offer,
-  add_offer,
-  delete_offer,
-  edit_offer,
-  manage_offer_products,
-} from "./offer-api";
+import { get_offers, get_offer, add_offer } from "./offer-api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -48,50 +41,9 @@ export const addOfferMutation = () => {
   return useMutation({
     mutationFn: add_offer,
     onSuccess: () => {
-      navigate(-1);
+      navigate("/");
       toast("successfully added");
-      queryClient.invalidateQueries({ queryKey: ["get-offers"] });
-    },
-  });
-};
-
-// Delete an offer by ID
-export const deleteOfferMutation = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: delete_offer,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["get-offers"] });
-    },
-  });
-};
-
-// Edit an offer by ID
-export const editOfferMutation = () => {
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: edit_offer,
-    onSuccess: () => {
-      navigate(-1);
-      toast("successfully Edited");
-      queryClient.invalidateQueries({ queryKey: ["get-offers"] });
-    },
-  });
-};
-
-// Get products for an offer
-export const manageOfferProductsQuery = () => {
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: manage_offer_products,
-    onSuccess: () => {
-      navigate(-1);
-      queryClient.invalidateQueries({ queryKey: ["get-offers"] });
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
   });
 };

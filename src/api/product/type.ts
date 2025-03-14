@@ -12,24 +12,26 @@ export interface attributesType {
   required: boolean;
 }
 
+export interface ProductData {
+  _id: string;
+  title: string;
+  description: string;
+  price: number;
+  availableSizes: string[];
+  logo: imageType;
+  images: imageType[];
+  videos: videoType[];
+  productType: productType;
+  creator: Personal_info;
+  lastEditor: Personal_info;
+  attributes: attributesType[];
+  notes: string;
+  createdAt: string;
+}
+
 export interface getOneProductResponse {
   success: boolean;
-  data: {
-    _id: string;
-    title: string;
-    description: string;
-    price: number;
-    availableSizes: string[];
-    logo: imageType;
-    images: imageType[];
-    videos: videoType[];
-    productType: productType;
-    creator: Personal_info;
-    lastEditor: Personal_info;
-    attributes: attributesType[];
-    notes: string;
-    createdAt: string;
-  };
+  data: ProductData;
 
   productTypeDetails: {
     productType: productType;
