@@ -1,6 +1,6 @@
 import TextField from "./TextField";
-import { Badge } from "./ui/badge";
 import { useFormContext } from "react-hook-form";
+import RHFPhoneNumber from "./rhf-phone-number";
 
 const UserInfoForm = () => {
   const { control } = useFormContext();
@@ -8,12 +8,14 @@ const UserInfoForm = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-5 md:px-20">
         <TextField
+          required
           name="name"
           control={control}
-          label="create_account.create_account"
+          label="create_account.enter_name"
           placeholder="create_account.enter_name"
         />
         <TextField
+          required
           type="email"
           name="email"
           control={control}
@@ -21,21 +23,15 @@ const UserInfoForm = () => {
           placeholder="create_account.enter_email"
         />
 
-        <div className="flex justify-between items-end gap-4">
-          <TextField
-            type="number"
-            name="phone"
-            control={control}
-            label="create_account.phone_number"
-            placeholder="create_account.enter_phone_number"
-          />
-
-          <Badge variant={"outline"} className="h-9 py-0 px-0 md:px-2 mr-2">
-            KW +986
-          </Badge>
-        </div>
+        <RHFPhoneNumber
+          name="phone"
+          control={control}
+          label="create_account.phone_number"
+          placeholder="create_account.enter_phone_number"
+        />
 
         <TextField
+          required
           type="password"
           name="password"
           control={control}

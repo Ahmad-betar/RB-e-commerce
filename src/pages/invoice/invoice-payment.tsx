@@ -1,3 +1,6 @@
+import { useForm, Controller } from "react-hook-form";
+import { useCreateOrderMutation } from "@/api/order/order-query";
+import { checkoutResponse } from "@/api/checkout/type";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import paymentcard from "@/assets/payment-card.svg";
 import { t } from "i18next";
@@ -5,9 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useForm } from "react-hook-form";
-import { useCreateOrderMutation } from "@/api/order/order-query";
-import { checkoutResponse } from "@/api/checkout/type";
+import { useNavigate } from "react-router-dom";
 
 interface InvoicePaymentType {
   onChange: VoidFunction;
@@ -15,12 +16,24 @@ interface InvoicePaymentType {
 }
 
 const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
-  const { handleSubmit, register } = useForm();
+  const navigate = useNavigate();
+  const { handleSubmit, control } = useForm();
   const { mutate, isPending } = useCreateOrderMutation();
 
   const onSubmit = (payload: any) => {
-    console.log(payload);
-    mutate(payload)
+    if (!data) return; 
+    const { deliveryAddress, couponCode } = data;
+
+    mutate(
+      { ...payload, deliveryAddress, couponCode },
+      {
+        onSuccess(data) {
+          console.log(data.orderId);
+
+          navigate("/orders/" + data.orderId);
+        },
+      }
+    );
   };
 
   return (
@@ -36,7 +49,7 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
             <div className="flex justify-between">
               <Label className="text-sm text-gray-600">{t("form.total")}</Label>
               <Label className="text-sm font-semibold">
-                ${data?.totalProductPrice.toFixed(2)}
+                {data?.totalProductPrice.toFixed(2)}
               </Label>
             </div>
 
@@ -45,7 +58,7 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
                 {t("form.discount")}
               </Label>
               <Label className="text-sm font-semibold">
-                ${data?.discount.toFixed(2)}
+                {data?.discount.toFixed(2)}
               </Label>
             </div>
 
@@ -54,7 +67,7 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
                 {t("form.deliviry_price")}
               </Label>
               <Label className="text-sm font-semibold">
-                ${data?.deliveryCost.toFixed(2)}
+                {data?.deliveryCost.toFixed(2)}
               </Label>
             </div>
 
@@ -63,7 +76,7 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
             <div className="flex justify-between">
               <Label className="text-sm font-bold">{t("form.total")}</Label>
               <Label className="text-sm font-bold">
-                ${data?.totalAmount.toFixed(2)}
+                {data?.totalAmount.toFixed(2)}
               </Label>
             </div>
           </CardContent>
@@ -77,37 +90,48 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
           </CardHeader>
 
           <CardContent className="p-6">
-            <RadioGroup {...register("paymentMethodId")} className="space-y-4">
-              {data?.paymentDetails.Data.PaymentMethods.map(
-                ({
-                  PaymentMethodId,
-                  ImageUrl,
-                  PaymentMethodAr,
-                  PaymentMethodCode,
-                }) => (
-                  <div
-                    key={PaymentMethodId}
-                    className="flex items-center gap-4 p-4 rounded-lg border hover:shadow-md transition-shadow"
-                  >
-                    <RadioGroupItem
-                      value={String(PaymentMethodId)}
-                      id={PaymentMethodCode}
-                    />
-                    <img
-                      className="w-8 h-8 object-contain"
-                      src={ImageUrl}
-                      alt={PaymentMethodAr}
-                    />
-                    <Label
-                      className="font-medium text-sm"
-                      htmlFor={PaymentMethodCode}
-                    >
-                      {PaymentMethodAr}
-                    </Label>
-                  </div>
-                )
+            <Controller
+              name="paymentMethodId"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  value={field.value}
+                  className="space-y-4"
+                >
+                  {data?.paymentDetails.Data.PaymentMethods.map(
+                    ({
+                      PaymentMethodId,
+                      ImageUrl,
+                      PaymentMethodAr,
+                      PaymentMethodCode,
+                    }) => (
+                      <div
+                        key={PaymentMethodId}
+                        className="flex items-center gap-4 p-4 rounded-lg border hover:shadow-md transition-shadow"
+                      >
+                        <RadioGroupItem
+                          value={String(PaymentMethodId)}
+                          id={PaymentMethodCode}
+                        />
+                        <img
+                          className="w-8 h-8 object-contain"
+                          src={ImageUrl}
+                          alt={PaymentMethodAr}
+                        />
+                        <Label
+                          className="font-medium text-sm"
+                          htmlFor={PaymentMethodCode}
+                        >
+                          {PaymentMethodAr}
+                        </Label>
+                      </div>
+                    )
+                  )}
+                </RadioGroup>
               )}
-            </RadioGroup>
+            />
           </CardContent>
         </Card>
 

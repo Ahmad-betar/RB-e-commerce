@@ -133,16 +133,18 @@ const Order = () => {
           </div>
         )}
 
-        <Link
-          to={data?.order.paymentUrl!}
-          className={buttonVariants({
-            variant: "secondary",
-            className: "w-full",
-          })}
-          target="_blank"
-        >
-          {t("form.payment")}
-        </Link>
+        {!data?.order.isPaid && (
+          <Link
+            to={data?.order.paymentUrl!}
+            className={buttonVariants({
+              variant: "secondary",
+              className: "w-full",
+            })}
+            target="_blank"
+          >
+            {t("form.payment")}
+          </Link>
+        )}
       </div>
     </div>
   );

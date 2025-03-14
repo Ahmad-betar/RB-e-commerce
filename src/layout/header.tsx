@@ -1,4 +1,4 @@
-import { DollarSign, ShoppingCart, User } from "lucide-react";
+import { DollarSign, LogOut, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 import home from "@/assets/home.svg";
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { getCartQuery } from "@/api/cart/cart-query";
+import { hasToken } from "@/lib/token";
 
 function Header() {
   const { data } = getCartQuery();
@@ -81,13 +82,25 @@ function Header() {
               {data?.data.cart.length ?? 0}
             </span>
           </Link>
-          <Link
-            to={"/account-info"}
-            className="hidden md:flex"
-            aria-label="User account"
-          >
-            <User className="h-6 w-6" />
-          </Link>
+          {!hasToken() && (
+            <Link
+              to={"/account-info"}
+              className="hidden md:flex"
+              aria-label="User account"
+            >
+              <User className="h-6 w-6" />
+            </Link>
+          )}
+          {hasToken() && (
+            <Link
+              to={"/"}
+              className="hidden md:flex"
+              aria-label="User account"
+              onClick={() => localStorage.clear()}
+            >
+              <LogOut className="h-6 w-6 rotate-180" />
+            </Link>
+          )}
         </div>
       </div>
 

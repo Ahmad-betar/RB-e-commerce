@@ -1,4 +1,5 @@
 import { productType } from "../product/type";
+import { imageType } from "../type";
 
 export interface OfferProduct {
   product: string;
@@ -50,6 +51,7 @@ interface ProductItem {
 
 interface Data {
   _id: string;
+  image: imageType;
   description: string;
   products: ProductItem[];
   expirationDate: string;

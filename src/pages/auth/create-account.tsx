@@ -6,9 +6,26 @@ import UserInfoForm from "@/components/user-info-form";
 import Header from "@/layout/header";
 import { FormProvider, useForm } from "react-hook-form";
 import { signupType } from "@/api/authentication/type";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { isValidPhoneNumber } from "react-phone-number-input";
+
+const FormSchema = z.object({
+  name: z.string(),
+  phone: z
+    .string()
+    .refine(isValidPhoneNumber, { message: t("form.invalid_phone") }),
+  email: z.string(),
+  password: z.string(),
+});
 
 const CreateAccount = ({ create }: { create: boolean }) => {
-  const methods = useForm<signupType>();
+  const methods = useForm<signupType>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      phone: "",
+    },
+  });
   const { mutate, isPending } = signupQuery();
 
   const onSubmit = (data: signupType) => {

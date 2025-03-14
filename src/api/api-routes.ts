@@ -74,4 +74,14 @@ export const API_ROUTES = {
     edit: "admin/offer/", //params
     manageOfferProducts: "/admin/manageOfferProducts/",
   },
+
+  imageSize: {
+    get: "sizesImage",
+    add: "admin/sizesImage",
+  },
+
+  tempOrder: {
+    add: "customer/orderFromTempOrder",
+    get: "customer/tempOrder/", //param
+  },
 };

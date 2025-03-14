@@ -18,6 +18,7 @@ export interface getCartType {
       notes: string;
       _id: string;
     }[];
+    totalPrice: number;
   };
 }
 

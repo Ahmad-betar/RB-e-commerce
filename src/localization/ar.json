@@ -59,7 +59,11 @@
     "not_paid": "غير مدفوع",
     "proceed": "إتمام الدفع",
     "back": "عودة",
-    "pay": "ادفع"
+    "pay": "ادفع",
+    "price": "السعر",
+    "quantity": "الكمية",
+    "subtotal": "",
+    "invalid_phone": "يرجي ادخال رقم صحيح"
   },
   "item": {
     "abaya": "العباية",
@@ -143,5 +147,10 @@
     "available": "العروض المتاحة",
     "buy_get": "اشتر {{number}} واحصل على العرض",
     "until": "صالح حتى"
+  },
+
+  "temp_order": {
+    "customer_phone": "رقم الهاتف",
+    "products": "المنتجات"
   }
 }

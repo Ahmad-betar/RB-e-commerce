@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RB</title>
     <!-- Meta Pixel Code -->
     <script>
       !(function (f, b, e, v, n, t, s) {
@@ -33,19 +29,23 @@
       fbq("init", "1707765543456112");
       fbq("track", "PageView");
     </script>
-    
+    <!-- End Meta Pixel Code -->
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RB</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Move noscript block to the body -->
     <noscript>
-      <!-- <img
+      <img
         height="1"
         width="1"
         style="display: none"
         src="https://www.facebook.com/tr?id=1707765543456112&ev=PageView&noscript=1"
-    /> -->
+      />
     </noscript>
-    <!-- End Meta Pixel Code -->
-  </head>
-  <body>
-    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

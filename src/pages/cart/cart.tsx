@@ -1,7 +1,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import CartItem from "./cart-item";
 import Title from "@/components/title";
-// import CouponInput from "@/components/coupon-input";
 import { Link } from "react-router-dom";
 import { getCartQuery } from "@/api/cart/cart-query";
 import LoadingSpinner from "@/components/ui/loading";
@@ -9,11 +8,6 @@ import { t } from "i18next";
 
 const Cart = () => {
   const { data, isLoading } = getCartQuery();
-
-  const total = data?.data.cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -36,18 +30,16 @@ const Cart = () => {
               size={item.size}
               price={item.price}
               quantity={item.quantity}
-              onQuantityChange={(_quantity) => {}}
+              onQuantityChange={() => {}}
             />
           ))}
         </div>
 
         <div className="px-4 md:px-12 lg:px-20 mt-8">
           <div className="flex justify-between items-end mb-8 max-sm:flex-col max-sm:gap-6">
-            {/* <CouponInput /> */}
-
             <div className="flex items-center justify-between gap-10 text-xl font-bold">
               <span>{t("form.total")}</span>
-              <span>{total?.toFixed(2)} د.ك</span>
+              <span>{data?.data.totalPrice}</span>
             </div>
           </div>
 

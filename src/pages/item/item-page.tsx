@@ -18,11 +18,13 @@ import { addToCart } from "@/api/cart/type";
 import { addToCartQuery } from "@/api/cart/cart-query";
 import { toast } from "sonner";
 import { usePopularsQuery } from "@/api/popular/popular-query";
+import { imageSizeQuery } from "@/api/image-size/image-size-query";
 
 const ProductPage = () => {
   const { id } = useParams();
   const [img, setimg] = useState("");
   const { mutate, isPending } = addToCartQuery();
+  const { data: imageSize } = imageSizeQuery();
   const methods = useForm<addToCart>({
     defaultValues: { quantity: 0, selectedAttributes: {} },
   });
@@ -95,8 +97,13 @@ const ProductPage = () => {
           </div>
 
           <RhfDialog
-            trigger={<img className="w-10 h-10 rounded-md" src={sizes} />}
-            content={<img src={sizes} />}
+            trigger={
+              <img
+                className="w-10 h-10 rounded-md"
+                src={imageSize?.image.url}
+              />
+            }
+            content={<img src={imageSize?.image.url} />}
           />
         </div>
 

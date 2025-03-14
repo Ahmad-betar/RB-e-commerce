@@ -22,10 +22,14 @@ const InvoiceDetails = ({ onChange, setData }: InvoiceDetailsType) => {
   const { mutate, isPending } = getCheckoutMutation();
 
   const onSubmit = (data: any) => {
+    console.log(data);
+
     mutate(
       { ...data, isUrgent: false },
       {
         onSuccess: (data: checkoutResponse) => {
+          console.log(data);
+
           setData(data);
           onChange();
         },

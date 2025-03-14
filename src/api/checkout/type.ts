@@ -37,4 +37,12 @@ export interface checkoutResponse {
       }[];
     };
   };
+  customerId: string;
+  deliveryAddress: {
+    state: string;
+    governorate: string;
+    city: string;
+    notes: string;
+  };
+  couponCode: string;
 }
