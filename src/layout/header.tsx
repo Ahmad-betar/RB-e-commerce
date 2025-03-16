@@ -7,18 +7,15 @@ import instagram from "@/assets/instagram.svg";
 import orders from "@/assets/my-orders.svg";
 import { t } from "i18next";
 import Sidebar from "./side-bar";
-import kwit from "@/assets/kwit.svg";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { getCartQuery } from "@/api/cart/cart-query";
-import { hasToken } from "@/lib/token";
+import { useState } from "react";
+import RhfDialog from "@/components/rhf-dialog";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 function Header() {
+  const [Token, setToken] = useState<boolean>(!!localStorage.getItem("token"));
   const { data } = getCartQuery();
 
   return (
@@ -60,7 +57,7 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <DropdownMenu>
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
                 <img src={kwit} alt="" />
@@ -71,7 +68,7 @@ function Header() {
               <DropdownMenuItem>kwit</DropdownMenuItem>
               <DropdownMenuItem>kwit</DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
 
           {/* <button aria-label="Search">
             <Search className="h-6 w-6" />
@@ -82,33 +79,95 @@ function Header() {
               {data?.data.cart.length ?? 0}
             </span>
           </Link>
-          {!hasToken() && (
+          {!Token && (
             <Link
-              to={"/account-info"}
+              to={"/login"}
               className="hidden md:flex"
               aria-label="User account"
             >
               <User className="h-6 w-6" />
             </Link>
           )}
-          {hasToken() && (
-            <Link
-              to={"/"}
-              className="hidden md:flex"
-              aria-label="User account"
-              onClick={() => localStorage.clear()}
-            >
-              <LogOut className="h-6 w-6 rotate-180" />
-            </Link>
+          {Token && (
+            <>
+              <RhfDialog
+                trigger={
+                  <Button
+                    variant={"ghost"}
+                    className="hidden md:flex p-0 hover:bg-transparent w-fit h-fit"
+                    aria-label="User account"
+                  >
+                    <LogOut className="h-6 w-6 rotate-180" />
+                  </Button>
+                }
+                content={
+                  <>
+                    <p>{t("form.sure")}</p>
+
+                    <div className="w-full flex justify-end">
+                      <DialogPrimitive.Close>
+                        <Button
+                          variant={"outline"}
+                          className="text-red-500 w-fit"
+                          onClick={() => {
+                            localStorage.clear();
+                            setToken(false);
+                            toast(t("form.logout"));
+                          }}
+                        >
+                          {t("form.continue")}
+                        </Button>
+                      </DialogPrimitive.Close>
+                    </div>
+                  </>
+                }
+              />
+            </>
           )}
         </div>
       </div>
 
-      <span className="h-8 max-md:h-4 max-md:text-xs flex items-center text-white">
+      {/* <span className="h-8 max-md:h-4 max-md:text-xs flex items-center text-white">
         عبايات جديدة ومنوعة وجودة عالية
-      </span>
+      </span> */}
     </header>
   );
 }
 
 export default Header;
+
+// <Link
+//   to={"/"}
+//   className="hidden md:flex"
+//   aria-label="User account"
+//   onClick={() => {
+//     localStorage.clear();
+//     setToken(false);
+//   }}
+// >
+//   <LogOut className="h-6 w-6 rotate-180" />
+// </Link>;
+// <AlertDialog open>
+//   <AlertDialogTrigger>
+//     <LogOut className="h-6 w-6 rotate-180" />
+//   </AlertDialogTrigger>
+//   <AlertDialogContent>
+//     <AlertDialogHeader>
+//       <AlertDialogTitle>{t("form.sure")}</AlertDialogTitle>
+//     </AlertDialogHeader>
+//     <AlertDialogFooter>
+//       <AlertDialogCancel className="mx-4">
+//         {t("form.cancel")}
+//       </AlertDialogCancel>
+//       <AlertDialogAction
+//         onClick={() => {
+//           localStorage.clear();
+//           setToken(false);
+//         }}
+//         className="mx-4"
+//       >
+//         {t("form.continue")}
+//       </AlertDialogAction>
+//     </AlertDialogFooter>
+//   </AlertDialogContent>
+// </AlertDialog>

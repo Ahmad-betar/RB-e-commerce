@@ -23,7 +23,7 @@ const OfferUI = () => {
       <h1 className="text-2xl font-bold my-6 px-4">{t("offers.available")}</h1>
 
       {/* Offers List */}
-      <div className="space-y-4 px-4">
+      <div className="flex flex-col gap-4 px-4">
         {data?.data.offers.map((offer) => (
           <Link to={"/offer/" + offer._id}>
             <Card key={offer._id}>

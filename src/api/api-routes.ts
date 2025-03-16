@@ -69,10 +69,7 @@ export const API_ROUTES = {
   offer: {
     get: "offers",
     getOne: "offer/", //params
-    add: "admin/offer",
-    delete: "admin/offer/", //params
-    edit: "admin/offer/", //params
-    manageOfferProducts: "/admin/manageOfferProducts/",
+    add: "/customer/offerCart",
   },
 
   imageSize: {
@@ -84,7 +81,7 @@ export const API_ROUTES = {
     add: "customer/orderFromTempOrder",
     get: "customer/tempOrder/", //param
   },
-  
+
   pixel: {
     get: "/pixel",
   },

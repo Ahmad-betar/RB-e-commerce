@@ -14,6 +14,7 @@ export const getCartQuery = () => {
 
       return data;
     },
+    enabled : !!localStorage.getItem('token'),
     placeholderData: keepPreviousData,
   });
 
