@@ -23,7 +23,7 @@ axiosInstance.interceptors.response.use(
     return Promise.resolve(response);
   },
   (error: any) => {
-    if (error.response && error.response.status >= 400) {
+    if (error.response && error.response.status === 401) {
       // Replace the current history entry with the home page URL
       window.history.replaceState(null, "", "/#/");
       // Redirect to the login page

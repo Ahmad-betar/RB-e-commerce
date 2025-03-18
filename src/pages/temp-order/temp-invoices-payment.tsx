@@ -8,28 +8,30 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { addTempOrderMutation } from "@/api/temp-order/temp-order-query";
 
 interface InvoicePaymentType {
   onChange: VoidFunction;
   data: checkoutResponse | undefined;
+  temp?: boolean;
 }
-
-const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
+const TempInvoicesPayment = ({ onChange, data }: InvoicePaymentType) => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const { handleSubmit, control } = useForm();
-  const { mutate, isPending } = useCreateOrderMutation();
+  const { mutate, isPending } = addTempOrderMutation();
 
   const onSubmit = (payload: any) => {
     if (!data) return;
     const { deliveryAddress, couponCode } = data;
 
     mutate(
-      { ...payload, deliveryAddress, couponCode },
+      { ...payload, deliveryAddress, couponCode, tempOrderId: id },
       {
-        onSuccess(data) {
-          navigate("/orders/" + data.orderId);
+        onSuccess(_data) {
+          navigate("/");
         },
         onError: (data: any) => {
           toast(data.response.data.message);
@@ -37,7 +39,6 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
       }
     );
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col items-center gap-6 my-8">
@@ -54,7 +55,6 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
                 {data?.totalProductPrice.toFixed(2)}
               </Label>
             </div>
-
             <div className="flex justify-between">
               <Label className="text-sm text-gray-600">
                 {t("form.discount")}
@@ -63,24 +63,24 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
                 {data?.discount.toFixed(2)}
               </Label>
             </div>
-
-            <div className="flex justify-between">
+            {/* <div className="flex justify-between">
               <Label className="text-sm text-gray-600">
                 {t("form.deliviry_price")}
               </Label>
               <Label className="text-sm font-semibold">
                 {data?.deliveryCost.toFixed(2)}
               </Label>
-            </div>
+            </div> */}
 
             <Separator />
-
-            <div className="flex justify-between">
-              <Label className="text-sm font-bold">{t("form.total")}</Label>
-              <Label className="text-sm font-bold">
-                {data?.totalAmount.toFixed(2)}
-              </Label>
-            </div>
+            {/* {!temp && (
+              <div className="flex justify-between">
+                <Label className="text-sm font-bold">{t("form.total")}</Label>
+                <Label className="text-sm font-bold">
+                  {data?.totalAmount.toFixed(2)}
+                </Label>
+              </div>
+            )} */}
           </CardContent>
         </Card>
 
@@ -159,4 +159,4 @@ const InvoicePayment = ({ onChange, data }: InvoicePaymentType) => {
   );
 };
 
-export default InvoicePayment;
+export default TempInvoicesPayment;

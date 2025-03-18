@@ -48,7 +48,7 @@ const Routes = () => {
         <Route path="/orders/:id" element={<Order />} />
         <Route path="/product/:id" element={<Item />} />
         <Route path="/invoice" element={<Invoice />} />
-        <Route path="/temp-order/:id" element={<TempOrder />} />
+        <Route path="/tempOrder/:id" element={<TempOrder />} />
         <Route path="/offers" element={<Offers />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="*" element={<NotFound />} />
